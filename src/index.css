@@ -1,13 +1,89 @@
-body {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Poppins', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --primary-color: #151515;
+  --secondary-color: #FFFFFF;
+  --hover-color: #D1D5DB;
+  --primary-button-hover-color: #313131;
+
+  --light-font: 300;
+  --regular-font: 400;
+  --semi-bold: 600;
+  --bold: 700;
+  --black: 900;
+
+  --border-xs: 5px;
+  --border-sm: 10px;
+  --border-md: 20px;
+  --border-lg: 30px;
+  --border-xl: 50%;
+
+  --p-desktop: 1.25rem;
+  --p-tab: 1.125rem;
+  --p-mobile: 1rem;
+
+  --h1-desktop: 3rem;
+  --h1-tab: 2.5rem;
+  --h1-mobile: 2rem;
+
+  --h2-desktop: 2rem;
+  --h2-tab: 1.75rem;
+  --h2-mobile: 1.5rem;
+}
+
+button {
+  border-radius: var(--border-xs);
+  padding: 0.5rem 1rem;
+  font-size: var(--p-mobile);
+  text-decoration: none;
+  border: none;
+}
+
+.primary-button {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+  font-size: var(--p-mobile);
+}
+
+.secondary-button {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  font-size: var(--p-mobile);
+}
+
+.primary-button:hover {
+  background-color: var(--primary-button-hover-color);
+}
+
+.secondary-button:hover {
+  background-color: var(--hover-color);
+}
+
+input,
+button {
+  cursor: pointer;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  cursor: text;
+}
+
+
+
+@media(min-width:768px) {
+  .primary-button,
+  .secondary-button {
+    font-size: var(--p-desktop)
+  }
 }
