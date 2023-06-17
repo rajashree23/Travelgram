@@ -8,6 +8,7 @@ import {
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
 
+import Logo from "../../assets/Logo.svg";
 import { useAuthContext } from "../../context/auth/AuthContext";
 import { loginUser } from "../../services/auth/authService";
 
@@ -61,7 +62,13 @@ export const Login = ({ handleToggleLoginPage }) => {
   return (
     <>
       <form className="form">
-        <h1>Welcome to Travelgram!</h1>
+        <div className="tagline-container">
+          <div className="image-container">
+            <img src={Logo} className="logo" />
+          </div>
+          <h1>Travelgram!</h1>
+        </div>
+        
         <label htmlFor="username" className="label">
           Username
         </label>

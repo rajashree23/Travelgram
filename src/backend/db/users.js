@@ -14,5 +14,8 @@ export const users = [
     password: "1234",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    followers: [],
+    following: [],
+    bookmarks: [],
   },
 ];

@@ -2,11 +2,11 @@
   from {
     transform: scale(0);
   }
+
   to {
     transform: scale(1);
   }
 }
-
 
 /* main auth container */
 .auth-container {
@@ -40,6 +40,19 @@
   align-self: center;
   font-size: var(--h1-mobile);
   font-weight: var(--bold);
+}
+
+.form .tagline-container {
+  display: flex;
+  align-items: center;
+}
+
+.tagline-container .image-container {
+  width: 8rem;
+}
+
+.image-container .logo {
+  width: 100%;
 }
 
 .label {
