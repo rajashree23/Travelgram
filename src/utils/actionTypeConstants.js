@@ -1,0 +1,8 @@
+export const ACTION_TYPES = {
+  SET_TOKEN: "SET_TOKEN",
+  SET_USER: "SET_USER",
+  LOG_OUT: "LOG_OUT",
+
+  SET_POSTS: "SET_POSTS",
+  SET_LOADER:"SET_LOADER"
+};
