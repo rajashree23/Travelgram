@@ -17,7 +17,7 @@ import {
 } from "../../../services/auth/authService";
 
 export const PostOption = ({ post }) => {
-  const { authUser, token, users } = useAuthContext();
+  const { authUser, token, users ,dispatch:authDispatch} = useAuthContext();
   const { dispatch } = useDataContext();
   const isUserFollowed = getIsUserFollowed(authUser, post);
   const isOwnPost = getIsOwnPost(post, authUser);
@@ -46,8 +46,8 @@ export const PostOption = ({ post }) => {
             {isUserFollowed >= 0 && (
               <p
                 onClick={() => {
-                  unfollowUser(currentUserDetail._id, dispatch, token, toast);
-                  getAllUsers(dispatch);
+                  unfollowUser(currentUserDetail._id, authDispatch, token, toast);
+                  getAllUsers(authDispatch);
                 }}
               >
                 Unfollow
@@ -56,8 +56,8 @@ export const PostOption = ({ post }) => {
             {isUserFollowed === -1 && (
               <p
                 onClick={() => {
-                  followUser(currentUserDetail._id, dispatch, token, toast);
-                  getAllUsers(dispatch);
+                  followUser(currentUserDetail._id, authDispatch, token, toast);
+                  getAllUsers(authDispatch);
                 }}
               >
                 Follow

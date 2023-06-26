@@ -121,7 +121,7 @@ export const unfollowUser = async (userId, authDispatch, token, toast) => {
   try {
     const {
       status,
-      data: { updatedUser },
+      data: { user },
     } = await axios.post(
       `/api/users/unfollow/${userId}`,
       {},
@@ -132,8 +132,8 @@ export const unfollowUser = async (userId, authDispatch, token, toast) => {
       }
     );
     if (status === 200) {
-      authDispatch({ type: ACTION_TYPES.SET_AUTH_USER, payload: updatedUser });
-      toast.success("Unfollowed user successfully!");
+      authDispatch({ type: ACTION_TYPES.SET_AUTH_USER, payload: user });
+      toast.warning("Unfollowed user successfully!");
     }
   } catch (error) {
     console.log(error);
