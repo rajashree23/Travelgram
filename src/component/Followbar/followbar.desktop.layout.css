@@ -1,0 +1,37 @@
+@media (min-width: 1024px) {
+  .followbar-container {
+    display: block;
+    border-left: 1px solid var(--border-color);
+    color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    color: var(--secondary-color);
+    gap: 2rem;
+    border-right: 1px solid var(--border-color);
+    padding: 2rem;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+  }
+
+  .input-field {
+    padding: 0.5rem;
+    border-radius: var(--border-xs);
+    border: none;
+    outline: none;
+    font-size: 1.125rem;
+  }
+  .follow-card-container {
+    display: flex;
+    flex-direction: revert;
+    align-items: center;
+    gap: 1rem;
+  }
+  .follow-card-container .user-details {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    justify-content: space-between;
+    width: 100%;
+  }
+}

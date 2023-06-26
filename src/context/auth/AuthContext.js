@@ -1,12 +1,25 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useEffect } from "react";
 import { AuthReducer, authInitialState } from "../../reducer/auth/AuthReducer";
+import { getAllUsers } from "../../services/auth/authService";
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, authInitialState);
+  useEffect(() => {
+    getAllUsers(dispatch);
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ token: state.token, dispatch: dispatch }}>
+    <AuthContext.Provider
+      value={{
+        token: state.token,
+        authUser: state.authUser ? JSON.parse(state.authUser) : null,
+        users: state.users,
+        bookmarks: state.bookmarks,
+        dispatch: dispatch,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
