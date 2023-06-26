@@ -33,6 +33,10 @@ export const AuthReducer = (state, action) => {
         ...state,
         bookmarks: action.payload,
       };
+      case ACTION_TYPES.SET_FOLLOWING:
+        return {
+          
+        }
     case ACTION_TYPES.LOG_OUT:
       localStorage.removeItem("token");
       localStorage.removeItem("authUser");
