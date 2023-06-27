@@ -16,7 +16,7 @@ import "./sidebar.mobile.layout.css";
 import "./sidebar.desktop.layout.css";
 
 export const LeftSidebar = () => {
-  const { authUser } = useAuthContext();
+  // const { authUser } = useAuthContext();
   return (
     <>
       <div className="left-sidebar-container">

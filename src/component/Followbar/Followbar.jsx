@@ -5,7 +5,6 @@ import { FollowbarCard } from "./FollowbarCard";
 
 import "./followbar.mobile.layout.css";
 import "./followbar.desktop.layout.css";
-import { useDataContext } from "../../context/data/DataContext";
 
 export const Followbar = () => {
   const { authUser, users, dispatch, token } = useAuthContext();

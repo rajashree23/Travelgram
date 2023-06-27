@@ -6,7 +6,7 @@ export const FollowbarCard = ({ suggestedUser, dispatch, token }) => {
   return (
     <div className="follow-card-container">
       <div className="profile-pic-container">
-        <img />
+        <img alt="profile" />
       </div>
       <div className="user-details">
         <div>

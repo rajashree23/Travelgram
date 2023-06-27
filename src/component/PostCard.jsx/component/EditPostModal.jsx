@@ -25,7 +25,7 @@ export const EditPostModal = ({
     <>
       <div className="modal-container">
         <div className="profile-pic-container">
-          <img />
+          <img alt="profile"/>
         </div>
         <div className="edit-content">
           <div className="post-input-container">

@@ -16,7 +16,7 @@ import "./auth.mobile.layout.css";
 import "./auth.desktop.layout.css";
 
 export const Login = ({ handleToggleLoginPage }) => {
-  const { token,  dispatch:authDispatch  } = useAuthContext();
+  const { token, dispatch: authDispatch } = useAuthContext();
   const navigate = useNavigate();
   const location = useLocation();
 

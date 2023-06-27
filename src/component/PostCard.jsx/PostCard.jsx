@@ -38,7 +38,7 @@ export const PostCard = ({
   const currentUserDetail = getCurrentUserDetail(users, post);
   const isLiked = getIsLiked(post, authUser);
   const isBookmarked = getIsBookmarked(bookmarks, post);
-  const computeTime = dateFormat(post.createdAt);
+  // const computeTime = dateFormat(post.createdAt);
 
   const handlePostLike = (postId) => likePost(postId, dispatch, token);
   const handlePostDislike = (postId) => dislikePost(postId, dispatch, token);
@@ -50,7 +50,7 @@ export const PostCard = ({
   return (
     <div className="post-card">
       <div className="profile-pic-container">
-        <img />
+        <img alt='profile' />
       </div>
 
       <div className="post-details">

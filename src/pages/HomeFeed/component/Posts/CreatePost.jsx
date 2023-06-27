@@ -17,9 +17,9 @@ export const CreatePost = () => {
     content: "",
     mediaUrl: "",
   });
-  const [media, setMedia] = useState(null);
+  // const [media, setMedia] = useState(null);
 
-  const handleFileUpload = (e) => setMedia(e.target.files[0]);
+  // const handleFileUpload = (e) => setMedia(e.target.files[0]);
 
   const handleInputText = (e) =>
     setPostData((PostDataValues) => ({
@@ -38,7 +38,7 @@ export const CreatePost = () => {
   return (
     <div className="create-post-container">
       <div className="profile-pic-container">
-        <img />
+        <img alt="profile"/>
       </div>
       <div className="post-input-container">
         <textarea
@@ -58,7 +58,7 @@ export const CreatePost = () => {
               type="file"
               id="fileInput"
               accept="image/png, image/gif, image/jpeg"
-              onChange={handleFileUpload}
+              // onChange={handleFileUpload}
             />
           </div>
           <div>
