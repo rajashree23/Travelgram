@@ -12,7 +12,8 @@
     right: 0;
     padding: 1rem;
     border-top: 1px solid var(--border-color);
-    background: #151515;
+    z-index: 99;
+    background-color: var(--primary-color);
 }
 
 .mobile-sidebar-container .link{
