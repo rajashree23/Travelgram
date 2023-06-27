@@ -13,7 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { dislikePost, likePost } from "../../services/data/postService";
-import { dateFormat, getIsBookmarked, getIsLiked } from "../../utils/posts";
+import { getIsBookmarked, getIsLiked } from "../../utils/posts";
 import {
   bookmarkPost,
   removeBookmarkPost,

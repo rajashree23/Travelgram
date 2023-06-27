@@ -10,7 +10,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import Logo from "../../assets/Logo_white.svg";
-import { useAuthContext } from "../../context/auth/AuthContext";
 
 import "./sidebar.mobile.layout.css";
 import "./sidebar.desktop.layout.css";

@@ -65,7 +65,7 @@ export const Signup = ({ handleToggleLoginPage }) => {
       <form className="form">
         <div className="tagline-container">
           <div className="image-container">
-            <img src={Logo} className="logo" />
+            <img src={Logo} className="logo" alt="logo" />
           </div>
           <h1>Travelgram!</h1>
         </div>
