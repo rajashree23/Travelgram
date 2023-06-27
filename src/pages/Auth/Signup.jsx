@@ -16,7 +16,7 @@ import "./auth.mobile.layout.css";
 import "./auth.desktop.layout.css";
 
 export const Signup = ({ handleToggleLoginPage }) => {
-  const { token,  dispatch:authDispatch  } = useAuthContext();
+  const { token, dispatch: authDispatch } = useAuthContext();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [signupForm, setSignupForm] = useState({
@@ -26,11 +26,12 @@ export const Signup = ({ handleToggleLoginPage }) => {
     username: "",
     password: "",
   });
+
   useEffect(() => {
     if (token) {
       navigate("/");
     }
-  }, [token]);
+  }, [token,navigate]);
 
   const setSignUpFormHandler = (inputFieldType, e) =>
     setSignupForm((signupFormValues) => ({

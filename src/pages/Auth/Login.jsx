@@ -32,7 +32,8 @@ export const Login = ({ handleToggleLoginPage }) => {
         navigate(location.state.from.pathname);
       else navigate("/");
     }
-  }, [token]);
+    
+  }, [token, location,navigate]);
 
   const setLoginFormHandler = (inputFieldType, e) =>
     setLoginForm((loginFormValues) => ({
