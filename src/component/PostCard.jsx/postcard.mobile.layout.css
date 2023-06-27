@@ -1,0 +1,143 @@
+.post-card {
+  box-shadow: 0px 0px 5px 2px #181818;
+  margin: 1rem 1rem;
+  border-radius: var(--border-xs);
+  padding: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.post-card .post-details {
+  width: 100%;
+}
+
+.post-details .user-details {
+  display: flex;
+  gap: 1rem;
+}
+
+.user-details .username,
+.user-details .date {
+  opacity: 50%;
+}
+
+ .user-details-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.post-details .post-content-container {
+  margin-top: 1rem;
+}
+
+.post-details .icon-container {
+  display: flex;
+  margin-top: 1rem;
+  gap: 1rem;
+  font-size: 1.25rem;
+}
+
+.icon-container .heart {
+  color: #c72e2e;
+}
+
+.icon-container .bookmark {
+  color: #0c640c;
+}
+
+.icon-container .icon,
+.user-details-container .icon {
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--border-xs);
+}
+
+.icon-container .icon:hover,
+.user-details-container .icon:hover {
+  background-color: var(--menu-hover-color);
+}
+
+.individual-icon-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.individual-icon-container p {
+  opacity: 50%;
+  font-size: 1rem;
+}
+
+.user-details-container .filter-menu {
+  display: flex;
+  position: absolute;
+  right: 0.5rem;
+  top: 2rem;
+  padding: 1rem;
+  box-shadow: 0px 0px 3px 1px #2e2c2c;
+  list-style: none;
+  flex-direction: column;
+  background: var(--primary-color);
+  border-radius: var(--border-sm);
+  color: var(--secondary-color);
+}
+.user-details-container .filter-menu li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--border-sm);
+}
+
+.user-details-container .filter-menu li:hover {
+  background-color: var(--menu-hover-color);
+}
+
+.modal-container{
+  background: var(--primary-color);
+  position: fixed;
+  border-radius: var(--border-sm);
+  display: flex;
+  color: white;
+  box-shadow: 0px 0px 5px 2px #181818;
+  z-index: 99;
+  padding: 1rem;
+  gap: 1rem;
+  align-items: center;
+  width: 60rem;
+  top: 21rem;
+  left: 29rem;
+}
+.modal-container .action-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-container .edit-post-media{
+  font-size: 1.5rem;
+}
+.modal-container .edit-content{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: space-between;
+  align-self: flex-start;
+  width: 100%;
+
+}
+.modal-container .button-container{
+  display: flex;
+  gap: 2rem;
+}
+
+.myoverlay{
+  background: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+}

@@ -1,0 +1,29 @@
+.left-sidebar-container{
+    display: none;
+}
+
+.mobile-sidebar-container{
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-around;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+    background: #151515;
+}
+
+.mobile-sidebar-container .link{
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-weight: var(--semi-bold);
+    font-size: 1.25rem;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.mobile-sidebar-container .link:hover{
+    opacity: 50%;
+}

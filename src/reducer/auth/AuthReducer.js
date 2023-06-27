@@ -2,7 +2,11 @@ import { ACTION_TYPES } from "../../utils/actionTypeConstants";
 
 export const authInitialState = {
   token: localStorage.getItem("token"),
-  user: localStorage.getItem("user"),
+  authUser: localStorage.getItem("authUser"),
+  users: [],
+  bookmarks: localStorage.getItem("authUser")
+    ? JSON.parse(localStorage.getItem("authUser")).bookmarks
+    : [],
 };
 
 export const AuthReducer = (state, action) => {
@@ -13,20 +17,35 @@ export const AuthReducer = (state, action) => {
         ...state,
         token: action.payload,
       };
-    case ACTION_TYPES.SET_USER:
-      localStorage.setItem("user", JSON.stringify(action.payload));
+    case ACTION_TYPES.SET_AUTH_USER:
+      localStorage.setItem("authUser", JSON.stringify(action.payload));
       return {
         ...state,
-        user: action.payload,
+        authUser: JSON.stringify(action.payload),
       };
+    case ACTION_TYPES.SET_ALL_USERS:
+      return {
+        ...state,
+        users: action.payload,
+      };
+    case ACTION_TYPES.SET_BOOKMARKS:
+      return {
+        ...state,
+        bookmarks: action.payload,
+      };
+      case ACTION_TYPES.SET_FOLLOWING:
+        return {
+          
+        }
     case ACTION_TYPES.LOG_OUT:
       localStorage.removeItem("token");
-      localStorage.removeItem("user");
+      localStorage.removeItem("authUser");
       return {
         ...state,
         token: null,
-        user: null,
+        authUser: null,
       };
+
     default:
       return state;
   }

@@ -16,7 +16,7 @@ import "./auth.mobile.layout.css";
 import "./auth.desktop.layout.css";
 
 export const Login = ({ handleToggleLoginPage }) => {
-  const { token, dispatch } = useAuthContext();
+  const { token,  dispatch:authDispatch  } = useAuthContext();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -43,10 +43,14 @@ export const Login = ({ handleToggleLoginPage }) => {
   const handleLogin = (e, type) => {
     e.preventDefault();
     if (type === "guest") {
-      loginUser({ username: "rajashree", password: "1234" }, dispatch, toast);
+      loginUser(
+        { username: "rajashree", password: "1234" },
+        authDispatch,
+        toast
+      );
     } else {
       if (loginForm.username && loginForm.password) {
-        loginUser(loginForm, dispatch, toast);
+        loginUser(loginForm, authDispatch, toast);
       } else {
         if (!loginForm.username && !loginForm.password) {
           toast.error("Please enter username and password!");
@@ -68,7 +72,7 @@ export const Login = ({ handleToggleLoginPage }) => {
           </div>
           <h1>Travelgram!</h1>
         </div>
-        
+
         <label htmlFor="username" className="label">
           Username
         </label>

@@ -16,7 +16,7 @@ import "./auth.mobile.layout.css";
 import "./auth.desktop.layout.css";
 
 export const Signup = ({ handleToggleLoginPage }) => {
-  const { token, dispatch } = useAuthContext();
+  const { token,  dispatch:authDispatch  } = useAuthContext();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [signupForm, setSignupForm] = useState({
@@ -42,7 +42,7 @@ export const Signup = ({ handleToggleLoginPage }) => {
     e.preventDefault();
     const { firstName, lastName, username, email, password } = signupForm;
     if (firstName && lastName && username && password) {
-      signupUser(signupForm, dispatch, toast);
+      signupUser(signupForm, authDispatch, toast);
     } else {
       if (!firstName && !lastName && !email && !username && !password) {
         toast.error("Please enter all the required fields!");

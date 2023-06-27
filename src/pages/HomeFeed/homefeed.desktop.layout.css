@@ -1,0 +1,6 @@
+@media(min-width:1024px){
+    .homefeed-container{
+        display: grid;
+        grid-template-columns:  20% 60% 20%;
+    }
+}
