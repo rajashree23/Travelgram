@@ -106,3 +106,27 @@ export const deletePost = async (postId, dataDispatch, token, toast) => {
     toast.error("Failed to delete post!");
   }
 };
+
+export const editPost = async (postId,postData, dataDispatch, token, toast) => {
+  try {
+    const {
+      status,
+      data: { posts },
+    } = await axios.post(
+      `/api/posts/edit/${postId}`,
+      { postData },
+      {
+        headers: {
+          authorization: token,
+        },
+      }
+    );
+    if (status === 201) {
+      dataDispatch({ type: ACTION_TYPES.SET_POSTS, payload: posts });
+      toast.success("Post edited successfully");
+    }
+  } catch (error) {
+    console.log(error);
+    toast.error("Couldn't be edited");
+  }
+};

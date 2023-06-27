@@ -15,10 +15,14 @@ import {
   getAllUsers,
   unfollowUser,
 } from "../../../services/auth/authService";
+import { useState } from "react";
+import { EditPostModal } from "./EditPostModal";
 
-export const PostOption = ({ post }) => {
-  const { authUser, token, users ,dispatch:authDispatch} = useAuthContext();
+export const PostOption = ({ post, setShowPostMenu }) => {
+  const { authUser, token, users, dispatch: authDispatch } = useAuthContext();
   const { dispatch } = useDataContext();
+  const [showEditPostModal, setShowEditPostModal] = useState(false);
+
   const isUserFollowed = getIsUserFollowed(authUser, post);
   const isOwnPost = getIsOwnPost(post, authUser);
   const currentUserDetail = getCurrentUserDetail(users, post);
@@ -27,45 +31,70 @@ export const PostOption = ({ post }) => {
     deletePost(postId, dispatch, token, toast);
 
   return (
-    <ul className="filter-menu">
-      {isOwnPost ? (
-        <>
-          <li>
-            <FontAwesomeIcon icon={faPenToSquare} />
-            <p>Edit</p>
-          </li>
-          <li onClick={() => handlePostDelete(post._id)}>
-            <FontAwesomeIcon icon={faTrash} />
-            <p>Delete</p>
-          </li>
-        </>
-      ) : (
-        <>
-          <li>
-            <FontAwesomeIcon icon={faMinus} />
-            {isUserFollowed >= 0 && (
-              <p
-                onClick={() => {
-                  unfollowUser(currentUserDetail._id, authDispatch, token, toast);
-                  getAllUsers(authDispatch);
-                }}
-              >
-                Unfollow
-              </p>
-            )}
-            {isUserFollowed === -1 && (
-              <p
-                onClick={() => {
-                  followUser(currentUserDetail._id, authDispatch, token, toast);
-                  getAllUsers(authDispatch);
-                }}
-              >
-                Follow
-              </p>
-            )}
-          </li>
-        </>
+    <>
+      <ul className="filter-menu">
+        {isOwnPost ? (
+          <>
+            <li
+              onClick={() =>
+                setShowEditPostModal(
+                  (showEditPostModalVal) => !showEditPostModalVal
+                )
+              }
+            >
+              <FontAwesomeIcon icon={faPenToSquare} />
+              <p>Edit</p>
+            </li>
+            <li onClick={() => handlePostDelete(post._id)}>
+              <FontAwesomeIcon icon={faTrash} />
+              <p>Delete</p>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <FontAwesomeIcon icon={faMinus} />
+              {isUserFollowed >= 0 && (
+                <p
+                  onClick={() => {
+                    unfollowUser(
+                      currentUserDetail._id,
+                      authDispatch,
+                      token,
+                      toast
+                    );
+                    getAllUsers(authDispatch);
+                  }}
+                >
+                  Unfollow
+                </p>
+              )}
+              {isUserFollowed === -1 && (
+                <p
+                  onClick={() => {
+                    followUser(
+                      currentUserDetail._id,
+                      authDispatch,
+                      token,
+                      toast
+                    );
+                    getAllUsers(authDispatch);
+                  }}
+                >
+                  Follow
+                </p>
+              )}
+            </li>
+          </>
+        )}
+      </ul>
+      {showEditPostModal && (
+        <EditPostModal
+          post={post}
+          setShowEditPostModal={setShowEditPostModal}
+          setShowPostMenu={setShowPostMenu}
+        />
       )}
-    </ul>
+    </>
   );
 };

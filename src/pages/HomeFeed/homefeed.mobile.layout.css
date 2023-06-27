@@ -91,6 +91,7 @@
   background: var(--primary-color);
   border-radius: var(--border-sm);
   color: var(--secondary-color);
+  z-index: 10;
 }
 .filter-container .filter-menu li {
   display: flex;

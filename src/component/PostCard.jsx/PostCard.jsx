@@ -12,15 +12,8 @@ import {
   faBookmark as faFilledBookmark,
 } from "@fortawesome/free-solid-svg-icons";
 
-import {
-  dislikePost,
-  likePost,
-} from "../../services/data/postService";
-import {
-  dateFormat,
-  getIsBookmarked,
-  getIsLiked,
-} from "../../utils/posts";
+import { dislikePost, likePost } from "../../services/data/postService";
+import { dateFormat, getIsBookmarked, getIsLiked } from "../../utils/posts";
 import {
   bookmarkPost,
   removeBookmarkPost,
@@ -63,16 +56,16 @@ export const PostCard = ({
       <div className="post-details">
         <div className="user-details-container">
           <div className="user-details">
+            <div>
             <p>
               {`${currentUserDetail.firstName} ${currentUserDetail.lastName}`}
             </p>
             <p className="username">{`@${post.username}`}</p>
-            <p className="date">{computeTime}</p>
+            </div>
+            <p className="date">11 d</p>
           </div>
           {showPostMenu && (
-            <PostOption
-              post={post}
-            />
+            <PostOption post={post} setShowPostMenu={setShowPostMenu} />
           )}
           <FontAwesomeIcon
             className="icon"

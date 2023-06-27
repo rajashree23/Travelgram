@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { RequiresAuth } from "./component/RequiresAuth/RequiresAuth";
 import { Auth } from "./pages/Auth/Auth";
 import { HomeFeed } from "./pages/HomeFeed/HomeFeed";
+import { Explore } from "./pages/Explore/Explore";
 
 function App() {
   return (
@@ -25,6 +26,14 @@ function App() {
           element={
             <RequiresAuth>
               <HomeFeed />
+            </RequiresAuth>
+          }
+        />
+         <Route
+          path="/explore"
+          element={
+            <RequiresAuth>
+              <Explore />
             </RequiresAuth>
           }
         />

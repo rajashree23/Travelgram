@@ -5,16 +5,18 @@ import { FollowbarCard } from "./FollowbarCard";
 
 import "./followbar.mobile.layout.css";
 import "./followbar.desktop.layout.css";
+import { useDataContext } from "../../context/data/DataContext";
 
 export const Followbar = () => {
   const { authUser, users, dispatch, token } = useAuthContext();
+
   const suggestedUsers = getSuggestedUsers(users, authUser);
 
   return (
     <div className="followbar-container">
       <input
         type="text"
-        placeholder="Search Posts, People, Anything"
+        placeholder="Search People"
         className="input-field"
       />
       {suggestedUsers.length !== 0 && (
