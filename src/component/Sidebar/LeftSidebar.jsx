@@ -49,12 +49,12 @@ export const LeftSidebar = () => {
               Bookmarks
             </NavLink>
 
-            <NavLink className="link">
+            <NavLink className="link" to={`/${authUser.username}`}>
               <div className="sidebar-profile-pic-container">
                 {authUser.profileAvatar ? (
                   <img src={authUser.profileAvatar} alt={authUser.username} />
                 ) : (
-                  <p>{authUser.username[0].toUpperCase()}</p>
+                  <p className="default-user-profile" >{authUser.username[0].toUpperCase()}</p>
                 )}
               </div>
               @{authUser.username}

@@ -16,7 +16,7 @@ export const EditPostModal = ({
     mediaUrl: post.mediaUrl,
   });
   const { dispatch } = useDataContext();
-  const { token } = useAuthContext();
+  const { token, authUser } = useAuthContext();
 
   const handleInputChange = (type, value) =>
     setPostData((postDataVal) => ({ ...postDataVal, [type]: value }));
@@ -25,7 +25,7 @@ export const EditPostModal = ({
     <>
       <div className="modal-container">
         <div className="profile-pic-container">
-          <img alt="profile"/>
+          <img src={authUser.profileAvatar} alt={authUser.username[0]} />
         </div>
         <div className="edit-content">
           <div className="post-input-container">

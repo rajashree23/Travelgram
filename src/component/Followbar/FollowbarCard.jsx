@@ -3,14 +3,16 @@ import { toast } from "react-toastify";
 import { followUser, getAllUsers } from "../../services/auth/authService";
 
 export const FollowbarCard = ({ suggestedUser, dispatch, token }) => {
-  console.log(suggestedUser);
   return (
     <div className="follow-card-container">
       <div className="profile-pic-container">
-        <img
-          src={suggestedUser.profileAvatar}
-          alt={suggestedUser.username[0]}
-        />
+        {suggestedUser.profileAvatar ? (
+          <img src={suggestedUser.profileAvatar} alt={suggestedUser.username} />
+        ) : (
+          <p className="default-user-profile">
+            {suggestedUser.username[0].toUpperCase()}
+          </p>
+        )}
       </div>
       <div className="user-details">
         <div>

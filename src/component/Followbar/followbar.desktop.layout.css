@@ -8,7 +8,7 @@
     color: var(--secondary-color);
     gap: 2rem;
     border-right: 1px solid var(--border-color);
-    padding: 2rem;
+    padding: 1rem;
     height: 100vh;
     position: sticky;
     top: 0;
@@ -17,7 +17,7 @@
   .input-field {
     padding: 0.5rem;
     border-radius: var(--border-xs);
-    border: none;
+    border: 1px solid var(--secondary-color);
     outline: none;
     font-size: 1.125rem;
   }

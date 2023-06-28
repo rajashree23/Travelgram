@@ -1,11 +1,10 @@
 import { ACTION_TYPES } from "../../utils/actionTypeConstants";
-import { Cloudinary } from "@cloudinary/url-gen";
 
 export const dataInitialState = {
   posts: [],
-  loader: false,
-  cloudinary: new Cloudinary({ cloud: { cloudName: "di7drmeev" } }),
+  loader: true,
   theme: localStorage.getItem("theme") || "dark",
+  filterOption: "Latest",
 };
 
 export const DataReducer = (state, action) => {
@@ -14,6 +13,7 @@ export const DataReducer = (state, action) => {
       return {
         ...state,
         posts: action.payload,
+        loader: false,
       };
     case ACTION_TYPES.SET_THEME:
       localStorage.setItem("theme", action.payload);
@@ -22,6 +22,11 @@ export const DataReducer = (state, action) => {
       return {
         ...state,
         theme: action.payload,
+      };
+    case ACTION_TYPES.SET_FILTER:
+      return {
+        ...state,
+        filterOption: action.payload,
       };
 
     default:

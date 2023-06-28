@@ -16,8 +16,9 @@ export const DataContextProvider = ({ children }) => {
     <DataContext.Provider
       value={{
         posts: state.posts,
-        cloudinary: state.cloudinary,
         theme: state.theme,
+        loader:state.loader,
+        filterOption:state.filterOption,
         dispatch: dispatch,
       }}
     >

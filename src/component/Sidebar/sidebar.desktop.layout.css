@@ -46,7 +46,7 @@
     text-decoration: none;
     color: var(--secondary-color);
     font-weight: var(--semi-bold);
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     display: flex;
     cursor: pointer;
     gap: 1rem;

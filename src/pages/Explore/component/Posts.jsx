@@ -1,6 +1,7 @@
 import { PostCard } from "../../../component/PostCard.jsx/PostCard";
 import { useAuthContext } from "../../../context/auth/AuthContext";
 import { useDataContext } from "../../../context/data/DataContext";
+import { getFilteredPostsByFilterOption } from "../../../utils/posts";
 
 export const Posts = () => {
   const { posts, dispatch } = useDataContext();
@@ -11,11 +12,13 @@ export const Posts = () => {
     bookmarks,
     dispatch: authDispatch,
   } = useAuthContext();
+  console.log(posts)
+  const filteredPosts = getFilteredPostsByFilterOption(posts, "Latest");
 
   return (
     <div>
       <div className="post-container">
-        {posts.map((post) => (
+        {filteredPosts.map((post) => (
           <PostCard
             post={post}
             key={post._id}
