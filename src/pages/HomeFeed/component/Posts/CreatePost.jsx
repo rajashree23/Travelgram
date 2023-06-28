@@ -10,7 +10,7 @@ import { useDataContext } from "../../../../context/data/DataContext";
 import { savePost } from "../../../../services/data/postService";
 
 export const CreatePost = () => {
-  const { token } = useAuthContext();
+  const { token, authUser } = useAuthContext();
   const { dispatch } = useDataContext();
 
   const [postData, setPostData] = useState({
@@ -29,8 +29,7 @@ export const CreatePost = () => {
   const handlePostSubmit = () => {
     if (postData.content) {
       savePost(postData, dispatch, token, toast);
-      setPostData({  content: "",
-      mediaUrl: "",})
+      setPostData({ content: "", mediaUrl: "" });
     } else {
       toast.warning("Can not post without any content!");
     }
@@ -38,7 +37,7 @@ export const CreatePost = () => {
   return (
     <div className="create-post-container">
       <div className="profile-pic-container">
-        <img alt="profile"/>
+        <img src={authUser.profileAvatar} alt={authUser.username[0]} />
       </div>
       <div className="post-input-container">
         <textarea
@@ -62,7 +61,9 @@ export const CreatePost = () => {
             />
           </div>
           <div>
-            <button className="secondary-button" onClick={handlePostSubmit}>Post</button>
+            <button className="secondary-button" onClick={handlePostSubmit}>
+              Post
+            </button>
           </div>
         </div>
       </div>
