@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faFaceSmile,
+  
   faImage,
   faXmarkCircle,
 } from "@fortawesome/free-regular-svg-icons";
