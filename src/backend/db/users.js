@@ -17,6 +17,8 @@ export const users = [
     followers: [],
     following: [],
     bookmarks: [],
+    profileAvatar:
+      "https://res.cloudinary.com/di7drmeev/image/upload/v1687956260/travelgram/profile-pictures/rajashree.jpg",
   },
   {
     _id: uuid(),
@@ -29,6 +31,8 @@ export const users = [
     followers: [],
     following: [],
     bookmarks: [],
+    profileAvatar:
+      "https://res.cloudinary.com/di7drmeev/image/upload/v1687962057/travelgram/profile-pictures/agni.jpg",
   },
   {
     _id: uuid(),
@@ -41,6 +45,8 @@ export const users = [
     followers: [],
     following: [],
     bookmarks: [],
+    profileAvatar:
+      "https://res.cloudinary.com/di7drmeev/image/upload/v1687962761/travelgram/profile-pictures/arka.jpg",
   },
   {
     _id: uuid(),
@@ -53,6 +59,8 @@ export const users = [
     followers: [],
     following: [],
     bookmarks: [],
+    profileAvatar:
+      "https://res.cloudinary.com/di7drmeev/image/upload/v1687962205/travelgram/profile-pictures/tapaja.jpg",
   },
   {
     _id: uuid(),
@@ -65,5 +73,7 @@ export const users = [
     followers: [],
     following: [],
     bookmarks: [],
+    profileAvatar:
+      "https://res.cloudinary.com/di7drmeev/image/upload/v1687962171/travelgram/profile-pictures/monalisha.jpg",
   },
 ];

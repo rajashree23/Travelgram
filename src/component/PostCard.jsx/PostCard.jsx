@@ -50,17 +50,20 @@ export const PostCard = ({
   return (
     <div className="post-card">
       <div className="profile-pic-container">
-        <img alt='profile' />
+        <img
+          src={currentUserDetail.profileAvatar}
+          alt={currentUserDetail.username[0]}
+        />
       </div>
 
       <div className="post-details">
         <div className="user-details-container">
           <div className="user-details">
             <div>
-            <p>
-              {`${currentUserDetail.firstName} ${currentUserDetail.lastName}`}
-            </p>
-            <p className="username">{`@${post.username}`}</p>
+              <p>
+                {`${currentUserDetail.firstName} ${currentUserDetail.lastName}`}
+              </p>
+              <p className="username">{`@${post.username}`}</p>
             </div>
             <p className="date">11 d</p>
           </div>

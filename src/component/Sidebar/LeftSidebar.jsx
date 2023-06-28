@@ -1,27 +1,37 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouse,
   faCompass,
   faBookmark,
-  faUser,
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Logo from "../../assets/Logo_white.svg";
+import Logo_Dark from "../../assets/Logo.svg";
+import { useAuthContext } from "../../context/auth/AuthContext";
 
 import "./sidebar.mobile.layout.css";
 import "./sidebar.desktop.layout.css";
+import { MoreOptions } from "./component/MoreOptions";
+import { useDataContext } from "../../context/data/DataContext";
 
 export const LeftSidebar = () => {
-  // const { authUser } = useAuthContext();
+  const { authUser } = useAuthContext();
+  const { theme } = useDataContext();
+  const [showMoreOptions, setShowMoreOptions] = useState(false);
+
   return (
     <>
       <div className="left-sidebar-container">
         <div className="menu-container">
           <div className="image-container">
-            <img src={Logo} alt="logo" className="logo-white" />
+            <img
+              src={theme === "dark" ? Logo : Logo_Dark}
+              alt="logo"
+              className="logo-white"
+            />
             <h1>Travelgram</h1>
           </div>
           <div className="sidebar-menu-container">
@@ -40,13 +50,24 @@ export const LeftSidebar = () => {
             </NavLink>
 
             <NavLink className="link">
-              <FontAwesomeIcon icon={faUser} />
-              Profile
+              <div className="sidebar-profile-pic-container">
+                {authUser.profileAvatar ? (
+                  <img src={authUser.profileAvatar} alt={authUser.username} />
+                ) : (
+                  <p>{authUser.username[0].toUpperCase()}</p>
+                )}
+              </div>
+              @{authUser.username}
             </NavLink>
           </div>
         </div>
-
-        <div className="more-container">
+        {showMoreOptions && <MoreOptions />}
+        <div
+          className="more-container"
+          onClick={() =>
+            setShowMoreOptions((showMoreOptionsVal) => !showMoreOptionsVal)
+          }
+        >
           <FontAwesomeIcon icon={faBars} className="menu-icon" />
           <p>More</p>
         </div>
@@ -65,13 +86,27 @@ export const LeftSidebar = () => {
           <FontAwesomeIcon icon={faBookmark} />
         </NavLink>
 
-        <NavLink className="link">
-          <FontAwesomeIcon icon={faUser} />
+        <NavLink className="link" to={`/${authUser.username}`}>
+          <div className="sidebar-profile-pic-container">
+            {authUser.profileAvatar ? (
+              <img src={authUser.profileAvatar} alt={authUser.username} />
+            ) : (
+              <p className="default-user-profile">
+                {authUser.username[0].toUpperCase()}
+              </p>
+            )}
+          </div>
         </NavLink>
 
-        <div className="link">
+        <div
+          className="link"
+          onClick={() =>
+            setShowMoreOptions((showMoreOptionsVal) => !showMoreOptionsVal)
+          }
+        >
           <FontAwesomeIcon icon={faBars} />
         </div>
+        {showMoreOptions && <MoreOptions />}
       </div>
     </>
   );
