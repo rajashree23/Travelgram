@@ -4,22 +4,25 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-body {
-  background-color: var(--primary-color);
-  overflow-x: hidden;
+[data-theme="light"] {
+  --primary-color: #fff;
+  --secondary-color: black;
+  --menu-hover-color: #c8c9ca;
+  --hover-color: #353637;
+}
+[data-theme="dark"] {
+  --primary-color: black;
+  --secondary-color: #ffffff;
+  --menu-hover-color: #3e3f40;
+  --hover-color: #d1d5db;
 }
 
 :root {
-  --primary-color: black;
-  --secondary-color: #FFFFFF;
-  --hover-color: #D1D5DB;
   --primary-button-hover-color: #313131;
-  --menu-hover-color: #3e3f40;
-  --border-color:#2b2929;
-
+  --border-color: #2b2929;
   --light-font: 300;
   --regular-font: 400;
   --semi-bold: 600;
@@ -43,6 +46,11 @@ body {
   --h2-desktop: 2rem;
   --h2-tab: 1.75rem;
   --h2-mobile: 1.5rem;
+}
+
+body {
+  background-color: var(--primary-color);
+  overflow-x: hidden;
 }
 
 button {
@@ -86,11 +94,9 @@ input[type="email"] {
   cursor: text;
 }
 
-
-
-@media(min-width:768px) {
+@media (min-width: 768px) {
   .primary-button,
   .secondary-button {
-    font-size: var(--p-desktop)
+    font-size: var(--p-desktop);
   }
 }

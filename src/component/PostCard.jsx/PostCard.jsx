@@ -13,7 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { dislikePost, likePost } from "../../services/data/postService";
-import { getIsBookmarked, getIsLiked } from "../../utils/posts";
+import { dateFormat, getIsBookmarked, getIsLiked } from "../../utils/posts";
 import {
   bookmarkPost,
   removeBookmarkPost,
@@ -38,7 +38,7 @@ export const PostCard = ({
   const currentUserDetail = getCurrentUserDetail(users, post);
   const isLiked = getIsLiked(post, authUser);
   const isBookmarked = getIsBookmarked(bookmarks, post);
-  // const computeTime = dateFormat(post.createdAt);
+  const computeTime = dateFormat(post.createdAt);
 
   const handlePostLike = (postId) => likePost(postId, dispatch, token);
   const handlePostDislike = (postId) => dislikePost(postId, dispatch, token);
@@ -50,19 +50,28 @@ export const PostCard = ({
   return (
     <div className="post-card">
       <div className="profile-pic-container">
-        <img alt='profile' />
+        {currentUserDetail.profileAvatar ? (
+          <img
+            src={currentUserDetail.profileAvatar}
+            alt={currentUserDetail.username}
+          />
+        ) : (
+          <p className="default-user-profile">
+            {currentUserDetail.username[0].toUpperCase()}
+          </p>
+        )}
       </div>
 
       <div className="post-details">
         <div className="user-details-container">
           <div className="user-details">
             <div>
-            <p>
-              {`${currentUserDetail.firstName} ${currentUserDetail.lastName}`}
-            </p>
-            <p className="username">{`@${post.username}`}</p>
+              <p>
+                {`${currentUserDetail.firstName} ${currentUserDetail.lastName}`}
+              </p>
+              <p className="username">{`@${post.username}`}</p>
             </div>
-            <p className="date">11 d</p>
+            <p className="date">{computeTime}</p>
           </div>
           {showPostMenu && (
             <PostOption post={post} setShowPostMenu={setShowPostMenu} />
@@ -76,6 +85,11 @@ export const PostCard = ({
 
         <div className="post-content-container">
           <p>{post.content}</p>
+          {post.mediaUrl && (
+            <div className="post-imag-container">
+              <img src={post.mediaUrl} alt="media" />
+            </div>
+          )}
         </div>
         <div className="icon-container">
           <div className="individual-icon-container">

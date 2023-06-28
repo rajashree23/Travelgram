@@ -1,30 +1,86 @@
-.left-sidebar-container{
-    display: none;
+.left-sidebar-container {
+  display: none;
 }
 
-.mobile-sidebar-container{
-    position: fixed;
-    bottom: 0;
-    display: flex;
-    gap: 1rem;
-    justify-content: space-around;
-    left: 0;
-    right: 0;
-    padding: 1rem;
-    border-top: 1px solid var(--border-color);
-    z-index: 99;
-    background-color: var(--primary-color);
+.mobile-sidebar-container {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-around;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  border-top: 1px solid var(--border-color);
+  z-index: 99;
+  background-color: var(--primary-color);
 }
 
-.mobile-sidebar-container .link{
-    text-decoration: none;
-    color: var(--secondary-color);
-    font-weight: var(--semi-bold);
-    font-size: 1.25rem;
-    cursor: pointer;
-    border-radius: 10px;
+.mobile-sidebar-container .link {
+  text-decoration: none;
+  color: var(--secondary-color);
+  font-weight: var(--semi-bold);
+  font-size: 1.25rem;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
-.mobile-sidebar-container .link:hover{
-    opacity: 50%;
+.mobile-sidebar-container .link:hover {
+  opacity: 50%;
 }
+.sidebar-profile-pic-container {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: var(--secondary-color);
+  align-self: flex-start;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar-profile-pic-container img {
+  width: 100%;
+  position: relative;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sidebar-profile-pic-container .default-user-profile {
+  color: var(--primary-color);
+}
+
+.more-options-container {
+  display: flex;
+  position: absolute;
+  bottom: 5rem;
+  padding: 1rem;
+  box-shadow: 0px 0px 3px 1px #2e2c2c;
+  list-style: none;
+  flex-direction: column;
+  background: var(--primary-color);
+  border-radius: var(--border-sm);
+  color: var(--secondary-color);
+  z-index: 10;
+  gap: 1rem;
+  right: 1rem
+}
+.more-options-container .option-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--secondary-color);
+  font-weight: var(--semi-bold);
+  font-size: 1.25rem;
+  display: flex;
+  cursor: pointer;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  border-radius: var(--border-sm);
+}
+.more-options-container .option-item:hover {
+  background-color: var(--menu-hover-color);
+}
+
