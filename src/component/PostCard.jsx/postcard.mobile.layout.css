@@ -110,9 +110,9 @@
   padding: 1rem;
   gap: 1rem;
   align-items: center;
-  width: 60rem;
   top: 21rem;
-  left: 29rem;
+  left: 3rem;
+  width: 20rem;
 }
 .modal-container .action-container {
   display: flex;
@@ -149,4 +149,21 @@
   position: relative;
   height: 100%;
   object-fit: cover;
+}
+
+.new-post-container {
+  display: flex;
+  position: relative;
+}
+
+.new-post-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.new-post-container .cross-icon {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  cursor: pointer;
 }

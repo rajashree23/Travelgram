@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImage } from "@fortawesome/free-regular-svg-icons";
+import { faImage, faXmarkCircle } from "@fortawesome/free-regular-svg-icons";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { useDataContext } from "../../../context/data/DataContext";
@@ -15,6 +15,7 @@ export const EditPostModal = ({
     content: post.content,
     mediaUrl: post.mediaUrl,
   });
+  const [image, setImage] = useState(post.mediaUrl);
   const { dispatch } = useDataContext();
   const { token, authUser } = useAuthContext();
 
@@ -34,6 +35,20 @@ export const EditPostModal = ({
               className="post-input"
               onChange={(e) => handleInputChange("content", e.target.value)}
             />
+
+            {image && (
+              <div className="new-post-container">
+                <img src={post.mediaUrl} alt="media" />
+                <FontAwesomeIcon
+                  icon={faXmarkCircle}
+                  className="cross-icon"
+                  onClick={() => {
+                    setImage(null);
+                    handleInputChange("mediaUrl", "");
+                  }}
+                />
+              </div>
+            )}
           </div>
           <div className="action-container">
             <FontAwesomeIcon icon={faImage} className="edit-post-media" />
