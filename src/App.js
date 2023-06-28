@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-
 import Mockman from "mockman-js";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,6 +18,7 @@ function App() {
         limit="1"
         style={{ top: "5.5rem", right: "0.5rem" }}
       />
+
       <Routes>
         <Route path="/login" element={<Auth />} />
         <Route

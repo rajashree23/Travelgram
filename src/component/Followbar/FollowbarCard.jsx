@@ -6,7 +6,13 @@ export const FollowbarCard = ({ suggestedUser, dispatch, token }) => {
   return (
     <div className="follow-card-container">
       <div className="profile-pic-container">
-        <img alt="profile" />
+        {suggestedUser.profileAvatar ? (
+          <img src={suggestedUser.profileAvatar} alt={suggestedUser.username} />
+        ) : (
+          <p className="default-user-profile">
+            {suggestedUser.username[0].toUpperCase()}
+          </p>
+        )}
       </div>
       <div className="user-details">
         <div>
