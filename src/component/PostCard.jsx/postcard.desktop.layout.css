@@ -1,6 +1,7 @@
 @media(min-width:1024px){
     .modal-container{
-        left: 29rem;
-        width: 60rem;
+        left: 42rem;
+        width: 30rem;
+        /* top: 4rem; */
     }
 }

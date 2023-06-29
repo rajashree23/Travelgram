@@ -38,7 +38,7 @@
   display: flex;
   margin-top: 1rem;
   gap: 1rem;
-  font-size: 1.25rem;
+  font-size: 2.5rem;
 }
 
 .icon-container .heart {
@@ -54,6 +54,7 @@
   cursor: pointer;
   padding: 0.5rem;
   border-radius: var(--border-xs);
+  font-size: 2.5rem;
 }
 
 .icon-container .icon:hover,
@@ -72,6 +73,7 @@
   font-size: 1rem;
 }
 
+/* Post Options */
 .user-details-container .filter-menu {
   display: flex;
   position: absolute;
@@ -86,6 +88,7 @@
   color: var(--secondary-color);
   z-index: 99;
 }
+
 .user-details-container .filter-menu li {
   display: flex;
   align-items: center;
@@ -110,7 +113,7 @@
   padding: 1rem;
   gap: 1rem;
   align-items: center;
-  top: 21rem;
+  top: 16rem;
   left: 3rem;
   width: 20rem;
 }
@@ -121,6 +124,7 @@
 }
 .modal-container .edit-post-media {
   font-size: 1.5rem;
+  cursor: pointer;
 }
 .modal-container .edit-content {
   display: flex;
@@ -166,4 +170,8 @@
   right: 0.5rem;
   top: 0.5rem;
   cursor: pointer;
+  color:black
+}
+#editFileInput{
+  display: none;
 }

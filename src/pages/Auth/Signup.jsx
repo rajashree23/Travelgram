@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faArrowRight,
-  faEye,
-  faEyeSlash,
-} from "@fortawesome/free-solid-svg-icons";
+  AiOutlineArrowRight,
+  AiFillEye,
+  AiFillEyeInvisible,
+} from "react-icons/ai";
 
 import Logo from "../../assets/Logo.svg";
 import { signupUser } from "../../services/auth/authService";
@@ -31,7 +30,7 @@ export const Signup = ({ handleToggleLoginPage }) => {
     if (token) {
       navigate("/");
     }
-  }, [token,navigate]);
+  }, [token, navigate]);
 
   const setSignUpFormHandler = (inputFieldType, e) =>
     setSignupForm((signupFormValues) => ({
@@ -136,13 +135,21 @@ export const Signup = ({ handleToggleLoginPage }) => {
               value={signupForm.password}
               onChange={(e) => setSignUpFormHandler("password", e)}
             />
-            <FontAwesomeIcon
-              icon={showPassword ? faEye : faEyeSlash}
-              className="password-icon"
-              onClick={() =>
-                setShowPassword((prevPasswordVal) => !prevPasswordVal)
-              }
-            />
+            {showPassword ? (
+              <AiFillEye
+                className="password-icon"
+                onClick={() =>
+                  setShowPassword((prevPasswordVal) => !prevPasswordVal)
+                }
+              />
+            ) : (
+              <AiFillEyeInvisible
+                className="password-icon"
+                onClick={() =>
+                  setShowPassword((prevPasswordVal) => !prevPasswordVal)
+                }
+              />
+            )}
           </div>
         </div>
 
@@ -151,7 +158,7 @@ export const Signup = ({ handleToggleLoginPage }) => {
         </button>
         <button className="new-acc" onClick={handleToggleLoginPage}>
           Already have an account
-          <FontAwesomeIcon icon={faArrowRight} />
+          <AiOutlineArrowRight />
         </button>
       </form>
     </>

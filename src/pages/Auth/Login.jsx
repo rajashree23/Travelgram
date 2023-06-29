@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faArrowRight,
-  faEye,
-  faEyeSlash,
-} from "@fortawesome/free-solid-svg-icons";
+  AiOutlineArrowRight,
+  AiFillEye,
+  AiFillEyeInvisible,
+} from "react-icons/ai";
 
 import Logo from "../../assets/Logo.svg";
 import { useAuthContext } from "../../context/auth/AuthContext";
@@ -32,8 +31,7 @@ export const Login = ({ handleToggleLoginPage }) => {
         navigate(location.state.from.pathname);
       else navigate("/");
     }
-    
-  }, [token, location,navigate]);
+  }, [token, location, navigate]);
 
   const setLoginFormHandler = (inputFieldType, e) =>
     setLoginForm((loginFormValues) => ({
@@ -101,13 +99,21 @@ export const Login = ({ handleToggleLoginPage }) => {
               placeholder="Enter password"
               onChange={(e) => setLoginFormHandler("password", e)}
             />
-            <FontAwesomeIcon
-              icon={showPassword ? faEye : faEyeSlash}
-              className="password-icon"
-              onClick={() =>
-                setShowPassword((prevPasswordVal) => !prevPasswordVal)
-              }
-            />
+            {showPassword ? (
+              <AiFillEye
+                className="password-icon"
+                onClick={() =>
+                  setShowPassword((prevPasswordVal) => !prevPasswordVal)
+                }
+              />
+            ) : (
+              <AiFillEyeInvisible
+                className="password-icon"
+                onClick={() =>
+                  setShowPassword((prevPasswordVal) => !prevPasswordVal)
+                }
+              />
+            )}
           </div>
         </div>
 
@@ -122,7 +128,7 @@ export const Login = ({ handleToggleLoginPage }) => {
         </button>
         <button className="new-acc" onClick={handleToggleLoginPage}>
           Create new account
-          <FontAwesomeIcon icon={faArrowRight} />
+          <AiOutlineArrowRight />
         </button>
       </form>
     </>

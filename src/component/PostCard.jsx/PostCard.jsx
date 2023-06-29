@@ -1,16 +1,13 @@
-import { useState } from "react";
+import { useRef ,useState} from "react";
 import { toast } from "react-toastify";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHeart,
-  faBookmark,
-  faComment,
-} from "@fortawesome/free-regular-svg-icons";
-import {
-  faEllipsis,
-  faHeart as faFilledHeart,
-  faBookmark as faFilledBookmark,
-} from "@fortawesome/free-solid-svg-icons";
+  FaHeart,
+  FaRegHeart,
+  FaRegComment,
+  FaBookmark,
+  FaRegBookmark,
+  FaEllipsisH,
+} from "react-icons/fa";
 
 import { dislikePost, likePost } from "../../services/data/postService";
 import { dateFormat, getIsBookmarked, getIsLiked } from "../../utils/posts";
@@ -18,23 +15,20 @@ import {
   bookmarkPost,
   removeBookmarkPost,
 } from "../../services/auth/authService";
+import { PostOption } from "./component/PostOption";
+import { getCurrentUserDetail } from "../../utils/users";
+import { useClickOutside } from "../../customHooks/useClickOutside";
+
 
 import "./postcard.mobile.layout.css";
 import "./postcard.desktop.layout.css";
-import { PostOption } from "./component/PostOption";
-import { getCurrentUserDetail } from "../../utils/users";
 
 export const PostCard = ({
-  post,
-  users,
-  token,
-  dispatch,
-  authUser,
-  authDispatch,
-  bookmarks,
+  postDetails: { post, dispatch },
+  userDetails: { users, token, authUser, authDispatch, bookmarks },
 }) => {
-  const [showPostMenu, setShowPostMenu] = useState(false);
-
+  const postRef = useRef();
+  const [showOptions, setShowOptions] = useState(false);
   const currentUserDetail = getCurrentUserDetail(users, post);
   const isLiked = getIsLiked(post, authUser);
   const isBookmarked = getIsBookmarked(bookmarks, post);
@@ -47,8 +41,10 @@ export const PostCard = ({
       ? bookmarkPost(postId, authDispatch, token, toast)
       : removeBookmarkPost(postId, authDispatch, token, toast);
 
+  useClickOutside(postRef, setShowOptions);
+
   return (
-    <div className="post-card">
+    <div className="post-card" ref={postRef}>
       <div className="profile-pic-container">
         {currentUserDetail.profileAvatar ? (
           <img
@@ -73,13 +69,12 @@ export const PostCard = ({
             </div>
             <p className="date">{computeTime}</p>
           </div>
-          {showPostMenu && (
-            <PostOption post={post} setShowPostMenu={setShowPostMenu} />
-          )}
-          <FontAwesomeIcon
+          {showOptions && <PostOption post={post} setShowOptions={setShowOptions}/>}
+          <FaEllipsisH
             className="icon"
-            icon={faEllipsis}
-            onClick={() => setShowPostMenu((prev) => !prev)}
+            onClick={() => {
+            setShowOptions((prev)=>!prev)
+            }}
           />
         </div>
 
@@ -94,34 +89,30 @@ export const PostCard = ({
         <div className="icon-container">
           <div className="individual-icon-container">
             {isLiked ? (
-              <FontAwesomeIcon
-                icon={faFilledHeart}
+              <FaHeart
                 className="heart icon"
                 onClick={() => handlePostDislike(post._id)}
               />
             ) : (
-              <FontAwesomeIcon
-                icon={faHeart}
+              <FaRegHeart
                 className="heart icon"
                 onClick={() => handlePostLike(post._id)}
               />
             )}
-
             {post.likes.likeCount > 0 && <p>{post.likes.likeCount}</p>}
           </div>
 
           <div className="individual-icon-container">
-            <FontAwesomeIcon icon={faComment} className="icon" />
+            <FaRegComment className="icon" />
           </div>
+
           {isBookmarked ? (
-            <FontAwesomeIcon
-              icon={faFilledBookmark}
+            <FaBookmark
               className="bookmark icon"
               onClick={() => handleBookmark(post._id, "uncheck")}
             />
           ) : (
-            <FontAwesomeIcon
-              icon={faBookmark}
+            <FaRegBookmark
               className="bookmark icon"
               onClick={() => handleBookmark(post._id, "check")}
             />

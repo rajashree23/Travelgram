@@ -4,7 +4,7 @@ import { useDataContext } from "../../../context/data/DataContext";
 import { getFilteredPostsByFilterOption } from "../../../utils/posts";
 
 export const Posts = () => {
-  const { posts, dispatch } = useDataContext();
+  const { posts, dispatch,postActions } = useDataContext();
   const {
     authUser,
     users,
@@ -12,7 +12,7 @@ export const Posts = () => {
     bookmarks,
     dispatch: authDispatch,
   } = useAuthContext();
-  console.log(posts)
+  console.log(posts);
   const filteredPosts = getFilteredPostsByFilterOption(posts, "Latest");
 
   return (
@@ -20,14 +20,19 @@ export const Posts = () => {
       <div className="post-container">
         {filteredPosts.map((post) => (
           <PostCard
-            post={post}
+            postDetails={{
+              post: post,
+              dispatch: dispatch,
+              postActions: postActions,
+            }}
+            userDetails={{
+              users: users,
+              token: token,
+              authUser: authUser,
+              authDispatch: authDispatch,
+              bookmarks: bookmarks,
+            }}
             key={post._id}
-            users={users}
-            token={token}
-            dispatch={dispatch}
-            authUser={authUser}
-            authDispatch={authDispatch}
-            bookmarks={bookmarks}
           />
         ))}
       </div>

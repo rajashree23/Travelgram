@@ -40,7 +40,7 @@ export const dateFormat = (createdAt) => {
   const elapsed = currentDate - createdDate;
 
   if (elapsed < msPerMinute) {
-    return `${Math.round(elapsed / 1000)}s ago"`;
+    return `${Math.round(elapsed / 1000)}s ago`;
   } else if (elapsed < msPerHour) {
     return `${Math.round(elapsed / msPerMinute)}m ago`;
   } else if (elapsed < msPerDay) {

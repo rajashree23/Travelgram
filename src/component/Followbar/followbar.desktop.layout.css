@@ -34,4 +34,21 @@
     justify-content: space-between;
     width: 100%;
   }
+
+  .find-users-container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background: #131313;
+    z-index: 99;
+    top: 4rem;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: var(--border-xs);
+    width: 21.5rem;
+  }
+  .find-user {
+    display: flex;
+    gap: 1rem;
+  }
 }

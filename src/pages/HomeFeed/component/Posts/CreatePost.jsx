@@ -1,18 +1,15 @@
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  
-  faImage,
-  faXmarkCircle,
-} from "@fortawesome/free-regular-svg-icons";
+import { FaImage } from "react-icons/fa";
+import { MdCancel } from "react-icons/md";
 import { toast } from "react-toastify";
 
-import "../../homefeed.mobile.layout.css";
-import "../../homefeed.desktop.layout.css";
 import { useAuthContext } from "../../../../context/auth/AuthContext";
 import { useDataContext } from "../../../../context/data/DataContext";
 import { savePost } from "../../../../services/data/postService";
 import { handleImageUpload } from "../../../../utils/posts";
+
+import "../../homefeed.mobile.layout.css";
+import "../../homefeed.desktop.layout.css";
 
 export const CreatePost = () => {
   const { token, authUser } = useAuthContext();
@@ -51,6 +48,7 @@ export const CreatePost = () => {
       setPostData({ content: "", mediaUrl: "" });
     }
   };
+  
   return (
     <div className="create-post-container">
       <div className="profile-pic-container">
@@ -73,8 +71,7 @@ export const CreatePost = () => {
         {image && (
           <div className="new-post-container">
             <img src={URL.createObjectURL(image)} alt="post" />
-            <FontAwesomeIcon
-              icon={faXmarkCircle}
+            <MdCancel
               className="cross-icon"
               onClick={() => setImage(null)}
             />
@@ -85,7 +82,7 @@ export const CreatePost = () => {
             {/* <FontAwesomeIcon icon={faFaceSmile} className="icon" /> */}
 
             <label htmlFor="fileInput">
-              <FontAwesomeIcon icon={faImage} className="icon" />
+              <FaImage className="icon" />
             </label>
             <input
               type="file"

@@ -19,6 +19,7 @@ export const DataContextProvider = ({ children }) => {
         theme: state.theme,
         loader:state.loader,
         filterOption:state.filterOption,
+        postActions:state.postActions,
         dispatch: dispatch,
       }}
     >

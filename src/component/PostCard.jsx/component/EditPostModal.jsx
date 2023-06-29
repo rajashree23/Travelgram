@@ -1,27 +1,26 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImage, faXmarkCircle } from "@fortawesome/free-regular-svg-icons";
+import { FaImage } from "react-icons/fa";
+import { MdCancel } from "react-icons/md";
 import { toast } from "react-toastify";
 import { useState } from "react";
+
 import { useDataContext } from "../../../context/data/DataContext";
 import { editPost } from "../../../services/data/postService";
 import { useAuthContext } from "../../../context/auth/AuthContext";
+import { ACTION_TYPES } from "../../../utils/actionTypeConstants";
 
-export const EditPostModal = ({
-  post,
-  setShowEditPostModal,
-  setShowPostMenu,
-}) => {
+export const EditPostModal = ({ post }) => {
   const [postData, setPostData] = useState({
     content: post.content,
     mediaUrl: post.mediaUrl,
   });
-  const [image, setImage] = useState(post.mediaUrl);
+  const [image, setImage] = useState(null);
+
   const { dispatch } = useDataContext();
   const { token, authUser } = useAuthContext();
 
   const handleInputChange = (type, value) =>
     setPostData((postDataVal) => ({ ...postDataVal, [type]: value }));
-
+  console.log(image,postData);
   return (
     <>
       <div className="modal-container">
@@ -36,11 +35,13 @@ export const EditPostModal = ({
               onChange={(e) => handleInputChange("content", e.target.value)}
             />
 
-            {image && (
+            {(image || postData.mediaUrl) && (
               <div className="new-post-container">
-                <img src={post.mediaUrl} alt="media" />
-                <FontAwesomeIcon
-                  icon={faXmarkCircle}
+                <img
+                  src={image ? URL.createObjectURL(image) : postData.mediaUrl}
+                  alt="media"
+                />
+                <MdCancel
                   className="cross-icon"
                   onClick={() => {
                     setImage(null);
@@ -51,13 +52,24 @@ export const EditPostModal = ({
             )}
           </div>
           <div className="action-container">
-            <FontAwesomeIcon icon={faImage} className="edit-post-media" />
+            <label htmlFor="editFileInput">
+              <FaImage className="edit-post-media" />
+            </label>
+            <input
+              type="file"
+              id="editFileInput"
+              accept="image/png, image/gif, image/jpeg"
+              onChange={(e) => setImage(e.target.files[0])}
+            />
+
             <div className="button-container">
               <button
                 className="secondary-button"
                 onClick={() => {
-                  setShowEditPostModal(false);
-                  setShowPostMenu(false);
+                  dispatch({
+                    type: ACTION_TYPES.SET_EDIT_POST_MODAL,
+                    payload: null,
+                  });
                 }}
               >
                 Cancel
@@ -66,8 +78,10 @@ export const EditPostModal = ({
                 className="secondary-button"
                 onClick={() => {
                   editPost(post._id, postData, dispatch, token, toast);
-                  setShowEditPostModal(false);
-                  setShowPostMenu(false);
+                  dispatch({
+                    type: ACTION_TYPES.SET_EDIT_POST_MODAL,
+                    payload: null,
+                  });
                 }}
               >
                 Save

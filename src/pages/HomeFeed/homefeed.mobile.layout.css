@@ -81,8 +81,9 @@
 
 .filter-icon {
   cursor: pointer;
-  padding: 1rem;
   border-radius: var(--border-xs);
+  padding: 0.25rem;
+  font-size: 2rem;
 }
 .filter-icon:hover {
   background-color: var(--menu-hover-color);

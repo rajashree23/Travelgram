@@ -4,6 +4,13 @@ export const dataInitialState = {
   posts: [],
   loader: true,
   theme: localStorage.getItem("theme") || "dark",
+  postActions: {
+    editModal: {
+      show: false,
+      post: null,
+    },
+    postCardMenu: false,
+  },
   filterOption: "Latest",
 };
 
@@ -28,7 +35,17 @@ export const DataReducer = (state, action) => {
         ...state,
         filterOption: action.payload,
       };
-
+    case ACTION_TYPES.SET_EDIT_POST_MODAL:
+      return {
+        ...state,
+        postActions: {
+          ...state.postActions,
+          editModal: {
+            show: !state.postActions.editModal.show,
+            post: action.payload,
+          },
+        },
+      };
     default:
       return state;
   }

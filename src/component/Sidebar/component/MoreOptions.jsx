@@ -4,11 +4,13 @@ import {
   BsFillMoonFill,
 } from "react-icons/bs";
 
-import "../sidebar.mobile.layout.css";
-import "../sidebar.desktop.layout.css";
 import { useAuthContext } from "../../../context/auth/AuthContext";
 import { ACTION_TYPES } from "../../../utils/actionTypeConstants";
 import { useDataContext } from "../../../context/data/DataContext";
+
+import "../sidebar.mobile.layout.css";
+import "../sidebar.desktop.layout.css";
+
 
 export const MoreOptions = () => {
   const { dispatch } = useAuthContext();

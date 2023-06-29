@@ -1,4 +1,3 @@
-import { v4 as uuid } from "uuid";
 import { formatDate } from "../utils/authUtils";
 /**
  * User Database can be added here.
@@ -7,7 +6,7 @@ import { formatDate } from "../utils/authUtils";
 
 export const users = [
   {
-    _id: uuid(),
+    _id: "1",
     firstName: "Rajashree",
     lastName: "Parhi",
     username: "rajashree",
@@ -15,27 +14,104 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     followers: [],
-    following: [],
+    following: [
+      {
+        _id: "5",
+        firstName: "Monalisha",
+        lastName: "Mishra",
+        username: "monalisha",
+        password: "1234",
+        createdAt: "2023-06-29T18:58:30+05:30",
+        updatedAt: "2023-06-29T18:58:30+05:30",
+        followers: [],
+        following: [],
+        bookmarks: [],
+        profileAvatar:
+          "https://res.cloudinary.com/di7drmeev/image/upload/v1687962171/travelgram/profile-pictures/monalisha.jpg",
+        id: "5",
+      },
+      {
+        _id: "2",
+        firstName: "Agni",
+        lastName: "Panda",
+        username: "agni",
+        password: "1234",
+        createdAt: "2023-06-29T18:58:30+05:30",
+        updatedAt: "2023-06-29T19:00:49+05:30",
+        followers: [],
+        following: [],
+        bookmarks: [],
+        profileAvatar:
+          "https://res.cloudinary.com/di7drmeev/image/upload/v1687962057/travelgram/profile-pictures/agni.jpg",
+        id: "2",
+      },
+    ],
     bookmarks: [],
     profileAvatar:
       "https://res.cloudinary.com/di7drmeev/image/upload/v1687956260/travelgram/profile-pictures/rajashree.jpg",
   },
   {
-    _id: uuid(),
+    _id: "2",
     firstName: "Agni",
     lastName: "Panda",
     username: "agni",
     password: "1234",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    followers: [],
+    followers: [
+      {
+        _id: "1",
+        firstName: "Rajashree",
+        lastName: "Parhi",
+        username: "rajashree",
+        password: "1234",
+        createdAt: formatDate(),
+        updatedAt: formatDate(),
+        followers: [],
+        following: [
+          {
+            _id: "5",
+            firstName: "Monalisha",
+            lastName: "Mishra",
+            username: "monalisha",
+            password: "1234",
+            createdAt: "2023-06-29T18:58:30+05:30",
+            updatedAt: "2023-06-29T18:58:30+05:30",
+            followers: [],
+            following: [],
+            bookmarks: [],
+            profileAvatar:
+              "https://res.cloudinary.com/di7drmeev/image/upload/v1687962171/travelgram/profile-pictures/monalisha.jpg",
+            id: "5",
+          },
+          {
+            _id: "2",
+            firstName: "Agni",
+            lastName: "Panda",
+            username: "agni",
+            password: "1234",
+            createdAt: "2023-06-29T18:58:30+05:30",
+            updatedAt: "2023-06-29T19:00:49+05:30",
+            followers: [],
+            following: [],
+            bookmarks: [],
+            profileAvatar:
+              "https://res.cloudinary.com/di7drmeev/image/upload/v1687962057/travelgram/profile-pictures/agni.jpg",
+            id: "2",
+          },
+        ],
+        bookmarks: [],
+        profileAvatar:
+          "https://res.cloudinary.com/di7drmeev/image/upload/v1687956260/travelgram/profile-pictures/rajashree.jpg",
+      },
+    ],
     following: [],
     bookmarks: [],
     profileAvatar:
       "https://res.cloudinary.com/di7drmeev/image/upload/v1687962057/travelgram/profile-pictures/agni.jpg",
   },
   {
-    _id: uuid(),
+    _id: "3",
     firstName: "Arka",
     lastName: "Sengupta",
     username: "relentless23",
@@ -49,7 +125,7 @@ export const users = [
       "https://res.cloudinary.com/di7drmeev/image/upload/v1687962761/travelgram/profile-pictures/arka.jpg",
   },
   {
-    _id: uuid(),
+    _id: "4",
     firstName: "Tapaja",
     lastName: "Banerjee",
     username: "tapaja",
@@ -63,14 +139,60 @@ export const users = [
       "https://res.cloudinary.com/di7drmeev/image/upload/v1687962205/travelgram/profile-pictures/tapaja.jpg",
   },
   {
-    _id: uuid(),
+    _id: "5",
     firstName: "Monalisha",
     lastName: "Mishra",
     username: "monalisha",
     password: "1234",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    followers: [],
+    followers: [
+      {
+        _id: "1",
+        firstName: "Rajashree",
+        lastName: "Parhi",
+        username: "rajashree",
+        password: "1234",
+        createdAt: formatDate(),
+        updatedAt: formatDate(),
+        followers: [],
+        following: [
+          {
+            _id: "5",
+            firstName: "Monalisha",
+            lastName: "Mishra",
+            username: "monalisha",
+            password: "1234",
+            createdAt: "2023-06-29T18:58:30+05:30",
+            updatedAt: "2023-06-29T18:58:30+05:30",
+            followers: [],
+            following: [],
+            bookmarks: [],
+            profileAvatar:
+              "https://res.cloudinary.com/di7drmeev/image/upload/v1687962171/travelgram/profile-pictures/monalisha.jpg",
+            id: "5",
+          },
+          {
+            _id: "2",
+            firstName: "Agni",
+            lastName: "Panda",
+            username: "agni",
+            password: "1234",
+            createdAt: "2023-06-29T18:58:30+05:30",
+            updatedAt: "2023-06-29T19:00:49+05:30",
+            followers: [],
+            following: [],
+            bookmarks: [],
+            profileAvatar:
+              "https://res.cloudinary.com/di7drmeev/image/upload/v1687962057/travelgram/profile-pictures/agni.jpg",
+            id: "2",
+          },
+        ],
+        bookmarks: [],
+        profileAvatar:
+          "https://res.cloudinary.com/di7drmeev/image/upload/v1687956260/travelgram/profile-pictures/rajashree.jpg",
+      },
+    ],
     following: [],
     bookmarks: [],
     profileAvatar:

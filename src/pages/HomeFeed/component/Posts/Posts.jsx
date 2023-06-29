@@ -7,9 +7,10 @@ import {
 import { CreatePost } from "./CreatePost";
 import { Filters } from "./Filters";
 import { PostCard } from "../../../../component/PostCard.jsx/PostCard";
+import { EditPostModal } from "../../../../component/PostCard.jsx/component/EditPostModal";
 
 export const Posts = () => {
-  const { posts, dispatch, filterOption } = useDataContext();
+  const { posts, dispatch, filterOption, postActions } = useDataContext();
   const {
     authUser,
     users,
@@ -34,17 +35,25 @@ export const Posts = () => {
         )}
         {filteredPosts.map((post) => (
           <PostCard
-            post={post}
+            postDetails={{
+              post: post,
+              dispatch: dispatch,
+            }}
+            userDetails={{
+              users: users,
+              token: token,
+              authUser: authUser,
+              authDispatch: authDispatch,
+              bookmarks: bookmarks,
+            }}
             key={post._id}
-            users={users}
-            token={token}
-            dispatch={dispatch}
-            authUser={authUser}
-            authDispatch={authDispatch}
-            bookmarks={bookmarks}
           />
         ))}
       </div>
+
+      {postActions.editModal.show && (
+        <EditPostModal post={postActions.editModal.post} />
+      )}
     </div>
   );
 };
