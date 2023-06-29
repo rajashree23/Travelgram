@@ -1,26 +1,26 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { NavLink } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHouse,
-  faCompass,
-  faBookmark,
-  faBars,
-} from "@fortawesome/free-solid-svg-icons";
+import { AiFillHome, AiFillCompass } from "react-icons/ai";
+import { BsFillBookmarkFill } from "react-icons/bs";
+import { FaBars } from "react-icons/fa";
 
 import Logo from "../../assets/Logo_white.svg";
 import Logo_Dark from "../../assets/Logo.svg";
 import { useAuthContext } from "../../context/auth/AuthContext";
+import { MoreOptions } from "./component/MoreOptions";
+import { useDataContext } from "../../context/data/DataContext";
+import { useClickOutside } from "../../customHooks/useClickOutside";
 
 import "./sidebar.mobile.layout.css";
 import "./sidebar.desktop.layout.css";
-import { MoreOptions } from "./component/MoreOptions";
-import { useDataContext } from "../../context/data/DataContext";
 
 export const LeftSidebar = () => {
+  const moreRef = useRef();
   const { authUser } = useAuthContext();
   const { theme } = useDataContext();
   const [showMoreOptions, setShowMoreOptions] = useState(false);
+
+  useClickOutside(moreRef, setShowMoreOptions);
 
   return (
     <>
@@ -36,16 +36,16 @@ export const LeftSidebar = () => {
           </div>
           <div className="sidebar-menu-container">
             <NavLink to="/" className="link">
-              <FontAwesomeIcon icon={faHouse} /> Home
+              <AiFillHome /> Home
             </NavLink>
 
             <NavLink to="/explore" className="link">
-              <FontAwesomeIcon icon={faCompass} />
+              <AiFillCompass />
               Explore
             </NavLink>
 
             <NavLink to="/bookmarks" className="link">
-              <FontAwesomeIcon icon={faBookmark} />
+              <BsFillBookmarkFill />
               Bookmarks
             </NavLink>
 
@@ -54,7 +54,9 @@ export const LeftSidebar = () => {
                 {authUser.profileAvatar ? (
                   <img src={authUser.profileAvatar} alt={authUser.username} />
                 ) : (
-                  <p className="default-user-profile" >{authUser.username[0].toUpperCase()}</p>
+                  <p className="default-user-profile">
+                    {authUser.username[0].toUpperCase()}
+                  </p>
                 )}
               </div>
               @{authUser.username}
@@ -63,27 +65,28 @@ export const LeftSidebar = () => {
         </div>
         {showMoreOptions && <MoreOptions />}
         <div
+          ref={moreRef}
           className="more-container"
           onClick={() =>
             setShowMoreOptions((showMoreOptionsVal) => !showMoreOptionsVal)
           }
         >
-          <FontAwesomeIcon icon={faBars} className="menu-icon" />
+          <FaBars className="menu-icon" />
           <p>More</p>
         </div>
       </div>
 
       <div className="mobile-sidebar-container">
         <NavLink to="/" className="link">
-          <FontAwesomeIcon icon={faHouse} />
+          <AiFillHome />
         </NavLink>
 
         <NavLink to="/explore" className="link">
-          <FontAwesomeIcon icon={faCompass} />
+          <AiFillCompass />
         </NavLink>
 
         <NavLink to="/bookmarks" className="link">
-          <FontAwesomeIcon icon={faBookmark} />
+          <BsFillBookmarkFill />
         </NavLink>
 
         <NavLink className="link" to={`/${authUser.username}`}>
@@ -99,14 +102,15 @@ export const LeftSidebar = () => {
         </NavLink>
 
         <div
+          ref={moreRef}
           className="link"
           onClick={() =>
             setShowMoreOptions((showMoreOptionsVal) => !showMoreOptionsVal)
           }
         >
-          <FontAwesomeIcon icon={faBars} />
+          <FaBars />
         </div>
-        {showMoreOptions && <MoreOptions />}
+        {showMoreOptions && <MoreOptions showMoreOptions={showMoreOptions} />}
       </div>
     </>
   );

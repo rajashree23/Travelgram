@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-import { followUser, getAllUsers } from "../../services/auth/authService";
+import { followUser, getAllUsers } from "../../../services/auth/authService";
 
 export const FollowbarCard = ({ suggestedUser, dispatch, token }) => {
   return (
