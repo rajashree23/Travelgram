@@ -1,3 +1,4 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import { FaMinus, FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
 
@@ -16,6 +17,8 @@ import { ACTION_TYPES } from "../../../utils/actionTypeConstants";
 export const PostOption = ({ post, setShowOptions }) => {
   const { authUser, token, users, dispatch: authDispatch } = useAuthContext();
   const { dispatch } = useDataContext();
+  const pathname = useLocation();
+  const navigate = useNavigate();
 
   const isUserFollowed = getIsUserFollowed(authUser, post);
   const isOwnPost = getIsOwnPost(post, authUser);
@@ -26,7 +29,8 @@ export const PostOption = ({ post, setShowOptions }) => {
       {isOwnPost ? (
         <>
           <li
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               dispatch({
                 type: ACTION_TYPES.SET_EDIT_POST_MODAL,
                 payload: post,
@@ -38,7 +42,9 @@ export const PostOption = ({ post, setShowOptions }) => {
             <p>Edit</p>
           </li>
           <li
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
+              if (pathname !== "/") navigate("/");
               deletePost(post._id, dispatch, token, toast);
               setShowOptions(false);
             }}
@@ -52,7 +58,8 @@ export const PostOption = ({ post, setShowOptions }) => {
           <li>
             {isUserFollowed >= 0 ? <FaMinus /> : <FaPlus />}
             <p
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 isUserFollowed >= 0
                   ? unfollowUser(
                       currentUserDetail._id,

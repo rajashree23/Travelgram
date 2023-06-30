@@ -69,10 +69,10 @@
 .icons .icon {
   cursor: pointer;
 }
-.emoji-picker{
+.emoji-picker {
   position: absolute;
-    top: 3rem;
-    z-index: 99;
+  top: 3rem;
+  z-index: 99;
 }
 
 #fileInput {

@@ -8,7 +8,6 @@ export const getPosts = async (dataDispatch) => {
       data: { posts },
     } = await axios.get("/api/posts");
     if (status === 200) {
-      console.log(posts);
       dataDispatch({ type: ACTION_TYPES.SET_POSTS, payload: posts });
     }
   } catch (error) {

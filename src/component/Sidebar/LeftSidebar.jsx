@@ -21,7 +21,7 @@ export const LeftSidebar = () => {
   const { theme } = useDataContext();
   const [showMoreOptions, setShowMoreOptions] = useState(false);
   const [showMoreOptionsMobile, setShowMoreOptionsMobile] = useState(false);
-  console.log(moreRef.current);
+
   useClickOutside(moreRef, setShowMoreOptions);
   useClickOutside(moreRefMobile, setShowMoreOptionsMobile);
 

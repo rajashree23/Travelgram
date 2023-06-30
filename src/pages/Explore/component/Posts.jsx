@@ -12,7 +12,7 @@ export const Posts = () => {
     bookmarks,
     dispatch: authDispatch,
   } = useAuthContext();
-  console.log(posts);
+  
   const filteredPosts = getFilteredPostsByFilterOption(posts, "Latest");
 
   return (

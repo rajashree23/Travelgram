@@ -20,7 +20,7 @@ export const EditPostModal = ({ post }) => {
 
   const handleInputChange = (type, value) =>
     setPostData((postDataVal) => ({ ...postDataVal, [type]: value }));
-  console.log(image,postData);
+
   return (
     <>
       <div className="modal-container">
@@ -43,7 +43,8 @@ export const EditPostModal = ({ post }) => {
                 />
                 <MdCancel
                   className="cross-icon"
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.stopPropagation();
                     setImage(null);
                     handleInputChange("mediaUrl", "");
                   }}
@@ -58,14 +59,15 @@ export const EditPostModal = ({ post }) => {
             <input
               type="file"
               id="editFileInput"
-              accept="image/png, image/gif, image/jpeg"
+              accept="image/*, video/mp4,video/x-m4v,video/*"
               onChange={(e) => setImage(e.target.files[0])}
             />
 
             <div className="button-container">
               <button
                 className="secondary-button"
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   dispatch({
                     type: ACTION_TYPES.SET_EDIT_POST_MODAL,
                     payload: null,
@@ -76,7 +78,8 @@ export const EditPostModal = ({ post }) => {
               </button>
               <button
                 className="secondary-button"
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   editPost(post._id, postData, dispatch, token, toast);
                   dispatch({
                     type: ACTION_TYPES.SET_EDIT_POST_MODAL,

@@ -48,7 +48,7 @@ export const CreatePost = () => {
       setPostData({ content: "", mediaUrl: "" });
     }
   };
-  
+
   return (
     <div className="create-post-container">
       <div className="profile-pic-container">
@@ -71,10 +71,7 @@ export const CreatePost = () => {
         {image && (
           <div className="new-post-container">
             <img src={URL.createObjectURL(image)} alt="post" />
-            <MdCancel
-              className="cross-icon"
-              onClick={() => setImage(null)}
-            />
+            <MdCancel className="cross-icon" onClick={() => setImage(null)} />
           </div>
         )}
         <div className="post-input-action-container">
@@ -87,7 +84,7 @@ export const CreatePost = () => {
             <input
               type="file"
               id="fileInput"
-              accept="image/png, image/gif, image/jpeg"
+              accept="image/*, video/mp4,video/x-m4v,video/*"
               onChange={(e) => setImage(e.target.files[0])}
             />
           </div>
