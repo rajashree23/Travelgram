@@ -1,4 +1,5 @@
-import { useRef ,useState} from "react";
+import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import {
   FaHeart,
@@ -19,7 +20,6 @@ import { PostOption } from "./component/PostOption";
 import { getCurrentUserDetail } from "../../utils/users";
 import { useClickOutside } from "../../customHooks/useClickOutside";
 
-
 import "./postcard.mobile.layout.css";
 import "./postcard.desktop.layout.css";
 
@@ -28,6 +28,7 @@ export const PostCard = ({
   userDetails: { users, token, authUser, authDispatch, bookmarks },
 }) => {
   const postRef = useRef();
+  const navigate = useNavigate();
   const [showOptions, setShowOptions] = useState(false);
   const currentUserDetail = getCurrentUserDetail(users, post);
   const isLiked = getIsLiked(post, authUser);
@@ -44,7 +45,11 @@ export const PostCard = ({
   useClickOutside(postRef, setShowOptions);
 
   return (
-    <div className="post-card" ref={postRef}>
+    <div
+      className="post-card"
+      ref={postRef}
+      onClick={() => navigate(`/post/${post.id}`)}
+    >
       <div className="profile-pic-container">
         {currentUserDetail.profileAvatar ? (
           <img
@@ -69,11 +74,14 @@ export const PostCard = ({
             </div>
             <p className="date">{computeTime}</p>
           </div>
-          {showOptions && <PostOption post={post} setShowOptions={setShowOptions}/>}
+          {showOptions && (
+            <PostOption post={post} setShowOptions={setShowOptions} />
+          )}
           <FaEllipsisH
             className="icon"
-            onClick={() => {
-            setShowOptions((prev)=>!prev)
+            onClick={(e) => {
+              setShowOptions((prev) => !prev);
+              e.stopPropagation();
             }}
           />
         </div>
@@ -91,12 +99,18 @@ export const PostCard = ({
             {isLiked ? (
               <FaHeart
                 className="heart icon"
-                onClick={() => handlePostDislike(post._id)}
+                onClick={(e) => {
+                  handlePostDislike(post._id);
+                  e.stopPropagation();
+                }}
               />
             ) : (
               <FaRegHeart
                 className="heart icon"
-                onClick={() => handlePostLike(post._id)}
+                onClick={(e) => {
+                  handlePostLike(post._id);
+                  e.stopPropagation();
+                }}
               />
             )}
             {post.likes.likeCount > 0 && <p>{post.likes.likeCount}</p>}
@@ -109,12 +123,18 @@ export const PostCard = ({
           {isBookmarked ? (
             <FaBookmark
               className="bookmark icon"
-              onClick={() => handleBookmark(post._id, "uncheck")}
+              onClick={(e) => {
+                handleBookmark(post._id, "uncheck");
+                e.stopPropagation();
+              }}
             />
           ) : (
             <FaRegBookmark
               className="bookmark icon"
-              onClick={() => handleBookmark(post._id, "check")}
+              onClick={(e) => {
+                handleBookmark(post._id, "check");
+                e.stopPropagation();
+              }}
             />
           )}
         </div>

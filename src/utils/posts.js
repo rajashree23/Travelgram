@@ -40,17 +40,17 @@ export const dateFormat = (createdAt) => {
   const elapsed = currentDate - createdDate;
 
   if (elapsed < msPerMinute) {
-    return `${Math.round(elapsed / 1000)}s ago`;
+    return `${Math.round(elapsed / 1000)}s`;
   } else if (elapsed < msPerHour) {
-    return `${Math.round(elapsed / msPerMinute)}m ago`;
+    return `${Math.round(elapsed / msPerMinute)}m`;
   } else if (elapsed < msPerDay) {
-    return `${Math.round(elapsed / msPerHour)}h ago`;
+    return `${Math.round(elapsed / msPerHour)}h`;
   } else if (elapsed < msPerMonth) {
-    return `${Math.round(elapsed / msPerDay)}d ago`;
+    return `${Math.round(elapsed / msPerDay)}d`;
   } else if (elapsed < msPerYear) {
-    return `${Math.round(elapsed / msPerMonth)}mo ago`;
+    return `${Math.round(elapsed / msPerMonth)}mo`;
   } else {
-    return `${Math.round(elapsed / msPerYear)}y ago`;
+    return `${Math.round(elapsed / msPerYear)}y`;
   }
 };
 

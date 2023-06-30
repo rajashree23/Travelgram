@@ -7,6 +7,8 @@ import { RequiresAuth } from "./component/RequiresAuth/RequiresAuth";
 import { Auth } from "./pages/Auth/Auth";
 import { HomeFeed } from "./pages/HomeFeed/HomeFeed";
 import { Explore } from "./pages/Explore/Explore";
+import { PostDetail } from "./pages/PostDetail/PostDetail";
+import { Bookmarks } from "./pages/Bookmarks/Bookmarks";
 
 function App() {
   return (
@@ -29,11 +31,27 @@ function App() {
             </RequiresAuth>
           }
         />
-         <Route
+        <Route
           path="/explore"
           element={
             <RequiresAuth>
               <Explore />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/post/:postId"
+          element={
+            <RequiresAuth>
+              <PostDetail />
+            </RequiresAuth>
+          }
+        />
+          <Route
+          path="/bookmarks"
+          element={
+            <RequiresAuth>
+              <Bookmarks />
             </RequiresAuth>
           }
         />
