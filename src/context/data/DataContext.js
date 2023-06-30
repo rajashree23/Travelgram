@@ -11,7 +11,7 @@ export const DataContextProvider = ({ children }) => {
     getPosts(dispatch);
     dispatch({ type: ACTION_TYPES.SET_THEME, payload: localStorage.getItem("theme") || "dark" });
   }, []);
-
+console.log(state.theme)
   return (
     <DataContext.Provider
       value={{

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 export const useClickOutside = (ref, setState) => {
     useEffect(() => {
       const closeOptionsModal = (e) => {
+        console.log(e.target)
         if (ref.current && !ref.current.contains(e.target)) {
           setState(false);
         }

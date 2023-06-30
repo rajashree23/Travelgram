@@ -4,7 +4,6 @@ import Spinner_Dark from "../../assets/spinner-dark.gif";
 
 export const Loader = () => {
   const { theme } = useDataContext();
-  console.log("laoder")
   return (
     <div>
       {theme === "dark" ? (

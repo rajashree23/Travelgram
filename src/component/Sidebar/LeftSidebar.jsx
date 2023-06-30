@@ -16,15 +16,18 @@ import "./sidebar.desktop.layout.css";
 
 export const LeftSidebar = () => {
   const moreRef = useRef();
+  const moreRefMobile = useRef();
   const { authUser } = useAuthContext();
   const { theme } = useDataContext();
   const [showMoreOptions, setShowMoreOptions] = useState(false);
-
+  const [showMoreOptionsMobile, setShowMoreOptionsMobile] = useState(false);
+  console.log(moreRef.current);
   useClickOutside(moreRef, setShowMoreOptions);
+  useClickOutside(moreRefMobile, setShowMoreOptionsMobile);
 
   return (
     <>
-      <div className="left-sidebar-container">
+      <div className="left-sidebar-container" ref={moreRef}>
         <div className="menu-container">
           <div className="image-container">
             <img
@@ -63,16 +66,19 @@ export const LeftSidebar = () => {
             </NavLink>
           </div>
         </div>
-        {showMoreOptions && <MoreOptions />}
-        <div
-          ref={moreRef}
-          className="more-container"
-          onClick={() =>
-            setShowMoreOptions((showMoreOptionsVal) => !showMoreOptionsVal)
-          }
-        >
-          <FaBars className="menu-icon" />
-          <p>More</p>
+        <div ref={moreRef}>
+          <div
+            className="more-container"
+            onClick={() =>
+              setShowMoreOptions((showMoreOptionsVal) => !showMoreOptionsVal)
+            }
+          >
+            <FaBars className="menu-icon" />
+            <p>More</p>
+          </div>
+          {showMoreOptions && (
+            <MoreOptions setShowMoreOptions={setShowMoreOptions} />
+          )}
         </div>
       </div>
 
@@ -100,17 +106,19 @@ export const LeftSidebar = () => {
             )}
           </div>
         </NavLink>
-
-        <div
-          ref={moreRef}
-          className="link"
-          onClick={() =>
-            setShowMoreOptions((showMoreOptionsVal) => !showMoreOptionsVal)
-          }
-        >
-          <FaBars />
+        <div ref={moreRefMobile}>
+          <div
+            className="link"
+            onClick={() =>
+              setShowMoreOptionsMobile((showMoreOptionsVal) => !showMoreOptionsVal)
+            }
+          >
+            <FaBars />
+          </div>
+          {showMoreOptionsMobile && (
+            <MoreOptions setShowMoreOptions={setShowMoreOptionsMobile} />
+          )}
         </div>
-        {showMoreOptions && <MoreOptions showMoreOptions={showMoreOptions} />}
       </div>
     </>
   );

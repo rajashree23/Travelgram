@@ -11,8 +11,7 @@ import { useDataContext } from "../../../context/data/DataContext";
 import "../sidebar.mobile.layout.css";
 import "../sidebar.desktop.layout.css";
 
-
-export const MoreOptions = () => {
+export const MoreOptions = ({ setShowMoreOptions }) => {
   const { dispatch } = useAuthContext();
   const { theme, dispatch: dataDispatch } = useDataContext();
 
@@ -20,7 +19,11 @@ export const MoreOptions = () => {
     <div className="more-options-container">
       <div
         className="option-item"
-        onClick={() => dispatch({ type: ACTION_TYPES.LOG_OUT })}
+        onClick={() => {
+          dispatch({ type: ACTION_TYPES.LOG_OUT });
+          // dataDispatch({ type: ACTION_TYPES.SET_THEME, payload: "dark" });
+          setShowMoreOptions(false);
+        }}
       >
         <BsFillArrowRightSquareFill />
         <p>Log Out</p>
@@ -28,9 +31,10 @@ export const MoreOptions = () => {
       {theme === "dark" ? (
         <div
           className="option-item"
-          onClick={() =>
-            dataDispatch({ type: ACTION_TYPES.SET_THEME, payload: "light" })
-          }
+          onClick={() => {
+            dataDispatch({ type: ACTION_TYPES.SET_THEME, payload: "light" });
+            setShowMoreOptions(false);
+          }}
         >
           <BsFillBrightnessHighFill />
           <p>Light Mode</p>
@@ -38,9 +42,10 @@ export const MoreOptions = () => {
       ) : (
         <div
           className="option-item"
-          onClick={() =>
-            dataDispatch({ type: ACTION_TYPES.SET_THEME, payload: "dark" })
-          }
+          onClick={() => {
+            dataDispatch({ type: ACTION_TYPES.SET_THEME, payload: "dark" });
+            setShowMoreOptions(false);
+          }}
         >
           <BsFillMoonFill />
           <p>Dark Mode</p>

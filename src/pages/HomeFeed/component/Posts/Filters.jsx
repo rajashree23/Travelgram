@@ -20,42 +20,49 @@ export const Filters = () => {
   return (
     <div className="filter-container">
       <p>{filterOption} Posts</p>
-      <div
-        ref={filterRef}
-        onClick={() => setShowFilterMenu((prev) => !prev)}
-        className="filter-icon"
-      >
-        <MdTune />
-      </div>
 
-      {showFilterMenu && (
-        <ul className="filter-menu">
-          <li
-            onClick={() =>
-              dispatch({ type: ACTION_TYPES.SET_FILTER, payload: "Trending" })
-            }
-          >
-            <FiTrendingUp />
-            <p>Trending</p>
-          </li>
-          <li
-            onClick={() =>
-              dispatch({ type: ACTION_TYPES.SET_FILTER, payload: "Latest" })
-            }
-          >
-            <AiOutlineArrowUp />
-            <p>Latest</p>
-          </li>
-          <li
-            onClick={() =>
-              dispatch({ type: ACTION_TYPES.SET_FILTER, payload: "Oldest" })
-            }
-          >
-            <AiOutlineArrowDown />
-            <p>Oldest</p>
-          </li>
-        </ul>
-      )}
+      <div ref={filterRef}>
+        <div
+          onClick={() => setShowFilterMenu((prev) => !prev)}
+          className="filter-icon"
+        >
+          <MdTune />
+        </div>
+        {showFilterMenu && (
+          <ul className="filter-menu">
+            <li
+              onClick={() => {
+                dispatch({
+                  type: ACTION_TYPES.SET_FILTER,
+                  payload: "Trending",
+                });
+                setShowFilterMenu(false);
+              }}
+            >
+              <FiTrendingUp />
+              <p>Trending</p>
+            </li>
+            <li
+              onClick={() => {
+                dispatch({ type: ACTION_TYPES.SET_FILTER, payload: "Latest" });
+                setShowFilterMenu(false);
+              }}
+            >
+              <AiOutlineArrowUp />
+              <p>Latest</p>
+            </li>
+            <li
+              onClick={() => {
+                dispatch({ type: ACTION_TYPES.SET_FILTER, payload: "Oldest" });
+                setShowFilterMenu(false);
+              }}
+            >
+              <AiOutlineArrowDown />
+              <p>Oldest</p>
+            </li>
+          </ul>
+        )}
+      </div>
     </div>
   );
 };
