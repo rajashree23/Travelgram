@@ -9,6 +9,8 @@ export const getFilteredPostsOfFollowing = (posts, authUser) => {
   return filteredPostsOfFollowing;
 };
 
+export const getOwnPosts=(posts,username)=>posts.filter((post)=>post.username===username);
+
 export const getFilteredPostsByFilterOption = (posts, filterOption) => {
   if (filterOption === "Latest") {
     return [...posts].sort(
