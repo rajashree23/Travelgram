@@ -140,3 +140,27 @@ export const unfollowUser = async (userId, authDispatch, token, toast) => {
     toast.error("Can not unfollow user!");
   }
 };
+
+export const editUser = async (userData, authDispatch, token, toast) => {
+  try {
+    const {
+      status,
+      data: { user },
+    } = await axios.post(
+      "/api/users/edit",
+      { userData },
+      {
+        headers: {
+          authorization: token,
+        },
+      }
+    );
+    if (status === 201) {
+      authDispatch({ type: ACTION_TYPES.SET_AUTH_USER, payload: user });
+      toast.success("User details updated successfully!");
+    }
+  } catch (error) {
+    console.log(error);
+    toast.error("Couldn't update user details");
+  }
+};

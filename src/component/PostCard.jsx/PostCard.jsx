@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import {
   FaHeart,
@@ -50,7 +50,13 @@ export const PostCard = ({
       ref={postRef}
       onClick={() => navigate(`/post/${post.id}`)}
     >
-      <div className="profile-pic-container">
+      <div
+        className="profile-pic-container"
+        onClick={(e) => {
+          e.stopPropagation();
+          navigate(`/profile/${currentUserDetail.username}`);
+        }}
+      >
         {currentUserDetail.profileAvatar ? (
           <img
             src={currentUserDetail.profileAvatar}

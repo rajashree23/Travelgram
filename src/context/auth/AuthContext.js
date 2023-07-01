@@ -8,7 +8,7 @@ export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, authInitialState);
   useEffect(() => {
     getAllUsers(dispatch);
-  }, []);
+  }, [state.authUser]);
 
   return (
     <AuthContext.Provider

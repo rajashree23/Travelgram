@@ -7,10 +7,11 @@ import { Followbar } from "../../component/Followbar/Followbar";
 import "./postdetail.mobile.layout.css";
 import "./postdetail.desktop.layout.css";
 import { useAuthContext } from "../../context/auth/AuthContext";
+import { EditPostModal } from "../../component/PostCard.jsx/component/EditPostModal";
 
 export const PostDetail = () => {
   const { postId } = useParams();
-  const { posts, dispatch } = useDataContext();
+  const { posts, dispatch, postActions } = useDataContext();
   const {
     authUser,
     users,
@@ -43,6 +44,9 @@ export const PostDetail = () => {
         )}
       </div>
       <Followbar />
+      {postActions.editModal.show && (
+        <EditPostModal post={postActions.editModal.post} />
+      )}
     </div>
   );
 };

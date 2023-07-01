@@ -1,6 +1,7 @@
 import { toast } from "react-toastify";
 
 import { followUser, getAllUsers } from "../../../services/auth/authService";
+import { NavLink } from "react-router-dom";
 
 export const FollowbarCard = ({ suggestedUser, dispatch, token }) => {
   return (
@@ -15,10 +16,10 @@ export const FollowbarCard = ({ suggestedUser, dispatch, token }) => {
         )}
       </div>
       <div className="user-details">
-        <div>
+        <NavLink className="user-detail-link" to={`/profile/${suggestedUser.username}`}>
           <p>{`${suggestedUser.firstName} ${suggestedUser.lastName}`}</p>
           <p className="username">{`@${suggestedUser.username}`}</p>
-        </div>
+        </NavLink>
         <button
           className="secondary-button"
           onClick={() => {

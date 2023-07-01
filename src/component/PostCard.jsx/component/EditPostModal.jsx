@@ -7,6 +7,7 @@ import { useDataContext } from "../../../context/data/DataContext";
 import { editPost } from "../../../services/data/postService";
 import { useAuthContext } from "../../../context/auth/AuthContext";
 import { ACTION_TYPES } from "../../../utils/actionTypeConstants";
+import { handleImageUpload } from "../../../utils/posts";
 
 export const EditPostModal = ({ post }) => {
   const [postData, setPostData] = useState({
@@ -21,6 +22,33 @@ export const EditPostModal = ({ post }) => {
   const handleInputChange = (type, value) =>
     setPostData((postDataVal) => ({ ...postDataVal, [type]: value }));
 
+  const handleEditPost = async (e) => {
+    e.stopPropagation();
+    if (image) {
+      if (postData.content) {
+        const imageUploadResponse = await handleImageUpload(image);
+        editPost(
+          post._id,
+          { ...postData, mediaUrl: imageUploadResponse.url },
+          dispatch,
+          token,
+          toast
+        );
+        dispatch({
+          type: ACTION_TYPES.SET_EDIT_POST_MODAL,
+          payload: null,
+        });
+      } else {
+        toast.warning("Can not post without any content!");
+      }
+    } else {
+      editPost(post._id, postData, dispatch, token, toast);
+      dispatch({
+        type: ACTION_TYPES.SET_EDIT_POST_MODAL,
+        payload: null,
+      });
+    }
+  };
   return (
     <>
       <div className="modal-container">
@@ -79,12 +107,7 @@ export const EditPostModal = ({ post }) => {
               <button
                 className="secondary-button"
                 onClick={(e) => {
-                  e.stopPropagation();
-                  editPost(post._id, postData, dispatch, token, toast);
-                  dispatch({
-                    type: ACTION_TYPES.SET_EDIT_POST_MODAL,
-                    payload: null,
-                  });
+                  handleEditPost(e);
                 }}
               >
                 Save

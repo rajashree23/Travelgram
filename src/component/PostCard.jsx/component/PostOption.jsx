@@ -15,7 +15,13 @@ import {
 import { ACTION_TYPES } from "../../../utils/actionTypeConstants";
 
 export const PostOption = ({ post, setShowOptions }) => {
-  const { authUser, token, users, dispatch: authDispatch } = useAuthContext();
+  const {
+    authUser,
+    token,
+    users,
+    dispatch: authDispatch,
+    bookmarks,
+  } = useAuthContext();
   const { dispatch } = useDataContext();
   const pathname = useLocation();
   const navigate = useNavigate();
@@ -44,8 +50,12 @@ export const PostOption = ({ post, setShowOptions }) => {
           <li
             onClick={(e) => {
               e.stopPropagation();
-              if (pathname !== "/") navigate("/");
+              if (pathname.pathname.includes("/post")) navigate("/");
               deletePost(post._id, dispatch, token, toast);
+              authDispatch({
+                type: ACTION_TYPES.SET_BOOKMARKS,
+                payload: bookmarks.filter((bookmark) => bookmark !== post._id),
+              });
               setShowOptions(false);
             }}
           >

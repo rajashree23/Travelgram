@@ -35,6 +35,10 @@
     width: 100%;
   }
 
+  .follow-card-container .user-details .user-detail-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+  }
   .find-users-container {
     position: fixed;
     display: flex;
@@ -50,5 +54,7 @@
   .find-user {
     display: flex;
     gap: 1rem;
+    text-decoration: none;
+    color: var(--secondary-color);
   }
 }

@@ -13,6 +13,8 @@ export const users = [
     password: "1234",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    bio: "Carpe Diem",
+    website: "rajashreeparhi.com",
     followers: [],
     following: [
       {

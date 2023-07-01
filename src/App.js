@@ -9,6 +9,7 @@ import { HomeFeed } from "./pages/HomeFeed/HomeFeed";
 import { Explore } from "./pages/Explore/Explore";
 import { PostDetail } from "./pages/PostDetail/PostDetail";
 import { Bookmarks } from "./pages/Bookmarks/Bookmarks";
+import { UserProfile } from "./pages/UserProfile/UserProfile";
 
 function App() {
   return (
@@ -47,11 +48,19 @@ function App() {
             </RequiresAuth>
           }
         />
-          <Route
+        <Route
           path="/bookmarks"
           element={
             <RequiresAuth>
               <Bookmarks />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/profile/:username"
+          element={
+            <RequiresAuth>
+              <UserProfile />
             </RequiresAuth>
           }
         />

@@ -21,7 +21,6 @@ export const MoreOptions = ({ setShowMoreOptions }) => {
         className="option-item"
         onClick={() => {
           dispatch({ type: ACTION_TYPES.LOG_OUT });
-          // dataDispatch({ type: ACTION_TYPES.SET_THEME, payload: "dark" });
           setShowMoreOptions(false);
         }}
       >
