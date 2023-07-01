@@ -14,7 +14,6 @@ import "./userprofile.mobile.layout.css";
 import "./userprofile.desktop.layout.css";
 import { useState } from "react";
 import { EditUserProfile } from "./component/EditProfile";
-import { getIsUserFollowed } from "../../utils/users";
 import { ACTION_TYPES } from "../../utils/actionTypeConstants";
 import { followUser, getAllUsers, unfollowUser } from "../../services/auth/authService";
 
