@@ -84,7 +84,12 @@ export const UserProfile = () => {
                   >
                     Edit Profile
                   </button>
-                  <FiLogOut />
+                  <FiLogOut
+                      className="icon"
+                      onClick={() =>
+                        authDispatch({ type: ACTION_TYPES.LOG_OUT })
+                      }
+                    />
                 </div>
               ) : (
                 <div className="button-container">
@@ -100,14 +105,6 @@ export const UserProfile = () => {
                   >
                     {isUserFollowed === -1 ? "Follow" : "Unfollow"}
                   </button>
-                  {authUser.username === username && (
-                    <FiLogOut
-                      className="icon"
-                      onClick={() =>
-                        authDispatch({ type: ACTION_TYPES.LOG_OUT })
-                      }
-                    />
-                  )}
                 </div>
               )}
 
