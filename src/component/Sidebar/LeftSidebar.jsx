@@ -32,7 +32,7 @@ export const LeftSidebar = () => {
       <div className="left-sidebar-container" ref={moreRef}>
         <div className="menu-container">
           <div className="image-container">
-            <LazyLoadImage
+            <img
               src={theme === "dark" ? Logo : Logo_Dark}
               alt="logo"
               className="logo-white"
