@@ -6,6 +6,8 @@ import { useAuthContext } from "../../../context/auth/AuthContext";
 import { handleImageUpload } from "../../../utils/posts";
 import { DEFAULT_PROFILE_URLS } from "../../../utils/constants";
 import { editUser } from "../../../services/auth/authService";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 export const EditUserProfile = ({ user, setShowEditProfile }) => {
   const { token, dispatch } = useAuthContext();
@@ -32,11 +34,12 @@ export const EditUserProfile = ({ user, setShowEditProfile }) => {
       <div className="edit-profile-modal-container">
         <div className="profile-pic-container edit">
           <label htmlFor="fileInput">
-            <img
+            <LazyLoadImage
               src={
                 image ? URL.createObjectURL(image) : userDetail.profileAvatar
               }
               alt={userDetail.username[0]}
+              effect="blur" 
             />
             <AiFillCamera className="camera-icon" />
           </label>
@@ -55,7 +58,7 @@ export const EditUserProfile = ({ user, setShowEditProfile }) => {
               className="profile-pic-container edit"
               onClick={() => handleInput("profileAvatar", url)}
             >
-              <img src={url} alt={url[0]} loading="lazy"  />
+              <LazyLoadImage src={url} alt={url[0]} effect="blur" />
             </div>
           ))}
         </div>

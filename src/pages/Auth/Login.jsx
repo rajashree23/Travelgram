@@ -10,6 +10,8 @@ import {
 import Logo from "../../assets/Logo.svg";
 import { useAuthContext } from "../../context/auth/AuthContext";
 import { loginUser } from "../../services/auth/authService";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import "./auth.mobile.layout.css";
 import "./auth.desktop.layout.css";
@@ -67,7 +69,7 @@ export const Login = ({ handleToggleLoginPage }) => {
       <form className="form">
         <div className="tagline-container">
           <div className="image-container">
-            <img src={Logo} className="logo" alt="logo" />
+            <LazyLoadImage src={Logo} className="logo" alt="logo" effect="blur" />
           </div>
           <h1>Travelgram!</h1>
         </div>

@@ -16,6 +16,8 @@ import { useState } from "react";
 import { EditUserProfile } from "./component/EditProfile";
 import { ACTION_TYPES } from "../../utils/actionTypeConstants";
 import { followUser, getAllUsers, unfollowUser } from "../../services/auth/authService";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 export const UserProfile = () => {
   const { posts, dispatch, postActions } = useDataContext();
@@ -47,7 +49,7 @@ export const UserProfile = () => {
           <>
             <div className="user-container">
               <div className="profile-container">
-                <img src={user.profileAvatar} alt={username[0]} />
+                <LazyLoadImage src={user.profileAvatar} alt={username[0]} effect="blur" />
               </div>
               <h2>{`${user.firstName} ${user.lastName}`}</h2>
               <p className="username">@{username}</p>

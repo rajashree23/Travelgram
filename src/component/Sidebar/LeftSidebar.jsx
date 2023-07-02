@@ -10,6 +10,8 @@ import { useAuthContext } from "../../context/auth/AuthContext";
 import { MoreOptions } from "./component/MoreOptions";
 import { useDataContext } from "../../context/data/DataContext";
 import { useClickOutside } from "../../customHooks/useClickOutside";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 import "./sidebar.mobile.layout.css";
 import "./sidebar.desktop.layout.css";
@@ -30,10 +32,11 @@ export const LeftSidebar = () => {
       <div className="left-sidebar-container" ref={moreRef}>
         <div className="menu-container">
           <div className="image-container">
-            <img
+            <LazyLoadImage
               src={theme === "dark" ? Logo : Logo_Dark}
               alt="logo"
               className="logo-white"
+              effect="blur"
             />
             <h1>Travelgram</h1>
           </div>
@@ -55,7 +58,11 @@ export const LeftSidebar = () => {
             <NavLink className="link" to={`/profile/${authUser.username}`}>
               <div className="sidebar-profile-pic-container">
                 {authUser.profileAvatar ? (
-                  <img src={authUser.profileAvatar} alt={authUser.username} />
+                  <LazyLoadImage
+                    src={authUser.profileAvatar}
+                    alt={authUser.username}
+                    effect="blur"
+                  />
                 ) : (
                   <p className="default-user-profile">
                     {authUser.username[0].toUpperCase()}
@@ -98,7 +105,11 @@ export const LeftSidebar = () => {
         <NavLink className="link" to={`/${authUser.username}`}>
           <div className="sidebar-profile-pic-container">
             {authUser.profileAvatar ? (
-              <img src={authUser.profileAvatar} alt={authUser.username} />
+              <LazyLoadImage
+                src={authUser.profileAvatar}
+                alt={authUser.username}
+                effect="blur"
+              />
             ) : (
               <p className="default-user-profile">
                 {authUser.username[0].toUpperCase()}
@@ -110,7 +121,9 @@ export const LeftSidebar = () => {
           <div
             className="link"
             onClick={() =>
-              setShowMoreOptionsMobile((showMoreOptionsVal) => !showMoreOptionsVal)
+              setShowMoreOptionsMobile(
+                (showMoreOptionsVal) => !showMoreOptionsVal
+              )
             }
           >
             <FaBars />

@@ -19,6 +19,8 @@ import {
 import { PostOption } from "./component/PostOption";
 import { getCurrentUserDetail } from "../../utils/users";
 import { useClickOutside } from "../../customHooks/useClickOutside";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import "./postcard.mobile.layout.css";
 import "./postcard.desktop.layout.css";
@@ -58,9 +60,10 @@ export const PostCard = ({
         }}
       >
         {currentUserDetail.profileAvatar ? (
-          <img
+          <LazyLoadImage
             src={currentUserDetail.profileAvatar}
             alt={currentUserDetail.username}
+            effect="blur" 
           />
         ) : (
           <p className="default-user-profile">
@@ -96,7 +99,7 @@ export const PostCard = ({
           <p>{post.content}</p>
           {post.mediaUrl && (
             <div className="post-imag-container">
-              <img src={post.mediaUrl} alt="media" />
+              <LazyLoadImage src={post.mediaUrl} alt="media" effect="blur" />
             </div>
           )}
         </div>

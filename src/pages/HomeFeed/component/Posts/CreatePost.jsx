@@ -7,6 +7,8 @@ import { useAuthContext } from "../../../../context/auth/AuthContext";
 import { useDataContext } from "../../../../context/data/DataContext";
 import { savePost } from "../../../../services/data/postService";
 import { handleImageUpload } from "../../../../utils/posts";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import "../../homefeed.mobile.layout.css";
 import "../../homefeed.desktop.layout.css";
@@ -53,8 +55,8 @@ export const CreatePost = () => {
     <div className="create-post-container">
       <div className="profile-pic-container">
         {authUser.profileAvatar ? (
-          <img src={authUser.profileAvatar} alt={authUser.username} />
-        ) : (
+          <LazyLoadImage src={authUser.profileAvatar} alt={authUser.username} effect="blur"  />
+        ) : ( 
           <p className="default-user-profile">
             {authUser.username[0].toUpperCase()}
           </p>
@@ -70,7 +72,7 @@ export const CreatePost = () => {
         />
         {image && (
           <div className="new-post-container">
-            <img src={URL.createObjectURL(image)} alt="post" />
+            <LazyLoadImage src={URL.createObjectURL(image)} alt="post" effect="blur"  />
             <MdCancel className="cross-icon" onClick={() => setImage(null)} />
           </div>
         )}

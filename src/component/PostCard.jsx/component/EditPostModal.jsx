@@ -8,6 +8,8 @@ import { editPost } from "../../../services/data/postService";
 import { useAuthContext } from "../../../context/auth/AuthContext";
 import { ACTION_TYPES } from "../../../utils/actionTypeConstants";
 import { handleImageUpload } from "../../../utils/posts";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 export const EditPostModal = ({ post }) => {
   const [postData, setPostData] = useState({
@@ -53,7 +55,11 @@ export const EditPostModal = ({ post }) => {
     <>
       <div className="modal-container">
         <div className="profile-pic-container">
-          <img src={authUser.profileAvatar} alt={authUser.username[0]} />
+          <LazyLoadImage
+            src={authUser.profileAvatar}
+            alt={authUser.username[0]}
+            effect="blur"
+          />
         </div>
         <div className="edit-content">
           <div className="post-input-container">
@@ -65,7 +71,8 @@ export const EditPostModal = ({ post }) => {
 
             {(image || postData.mediaUrl) && (
               <div className="new-post-container">
-                <img
+                <LazyLoadImage
+                  effect="blur"
                   src={image ? URL.createObjectURL(image) : postData.mediaUrl}
                   alt="media"
                 />

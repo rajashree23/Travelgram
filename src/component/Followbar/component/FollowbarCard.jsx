@@ -2,13 +2,15 @@ import { toast } from "react-toastify";
 
 import { followUser, getAllUsers } from "../../../services/auth/authService";
 import { NavLink } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 export const FollowbarCard = ({ suggestedUser, dispatch, token }) => {
   return (
     <div className="follow-card-container">
       <div className="profile-pic-container">
         {suggestedUser.profileAvatar ? (
-          <img src={suggestedUser.profileAvatar} alt={suggestedUser.username} />
+          <LazyLoadImage src={suggestedUser.profileAvatar} alt={suggestedUser.username} effect="blur"  />
         ) : (
           <p className="default-user-profile">
             {suggestedUser.username[0].toUpperCase()}
