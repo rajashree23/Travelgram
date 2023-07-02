@@ -18,6 +18,9 @@
   border-radius: 50%;
   background: var(--secondary-color);
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .user-profile-container .user-container .profile-container img {
   width: 100%;
@@ -113,4 +116,9 @@
 .website{
   color:var(--secondary-color);
   text-decoration: none;
+}
+.default-user-profile{
+  color: var(--primary-color);
+  font-size: 2rem;
+  font-weight: 600;
 }

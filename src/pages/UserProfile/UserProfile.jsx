@@ -15,9 +15,13 @@ import "./userprofile.desktop.layout.css";
 import { useState } from "react";
 import { EditUserProfile } from "./component/EditProfile";
 import { ACTION_TYPES } from "../../utils/actionTypeConstants";
-import { followUser, getAllUsers, unfollowUser } from "../../services/auth/authService";
+import {
+  followUser,
+  getAllUsers,
+  unfollowUser,
+} from "../../services/auth/authService";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 export const UserProfile = () => {
   const { posts, dispatch, postActions } = useDataContext();
@@ -49,7 +53,17 @@ export const UserProfile = () => {
           <>
             <div className="user-container">
               <div className="profile-container">
-                <LazyLoadImage src={user.profileAvatar} alt={username[0]} effect="blur" />
+                {user.profileAvatar ? (
+                  <LazyLoadImage
+                    src={user.profileAvatar}
+                    alt={username[0]}
+                    effect="blur"
+                  />
+                ) : (
+                  <p className="default-user-profile">
+                    {authUser.username[0].toUpperCase()}
+                  </p>
+                )}
               </div>
               <h2>{`${user.firstName} ${user.lastName}`}</h2>
               <p className="username">@{username}</p>
@@ -137,14 +151,10 @@ export const UserProfile = () => {
       {postActions.editModal.show && (
         <EditPostModal post={postActions.editModal.post} />
       )}
-     
-        {showEditProfile && (
-          <EditUserProfile
-            user={user}
-            setShowEditProfile={setShowEditProfile}
-          />
-        )}
 
+      {showEditProfile && (
+        <EditUserProfile user={user} setShowEditProfile={setShowEditProfile} />
+      )}
     </div>
   );
 };
