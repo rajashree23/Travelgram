@@ -23,6 +23,11 @@ export const AuthReducer = (state, action) => {
         ...state,
         authUser: JSON.stringify(action.payload),
       };
+      case ACTION_TYPES.SET_EDITED_AUTH_USER:
+        return {
+          ...state,
+          authUser: JSON.stringify(action.payload),
+        };
     case ACTION_TYPES.SET_ALL_USERS:
       return {
         ...state,

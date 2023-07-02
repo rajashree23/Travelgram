@@ -56,6 +56,7 @@ export const UserProfile = () => {
                 href={`https://${user.website}`}
                 target="_blank"
                 rel="noreferrer"
+                className="website"
               >
                 {user.website}
               </a>
@@ -134,14 +135,14 @@ export const UserProfile = () => {
       {postActions.editModal.show && (
         <EditPostModal post={postActions.editModal.post} />
       )}
-      <div>
+     
         {showEditProfile && (
           <EditUserProfile
             user={user}
             setShowEditProfile={setShowEditProfile}
           />
         )}
-      </div>
+
     </div>
   );
 };

@@ -156,7 +156,7 @@ export const editUser = async (userData, authDispatch, token, toast) => {
       }
     );
     if (status === 201) {
-      authDispatch({ type: ACTION_TYPES.SET_AUTH_USER, payload: user });
+      authDispatch({ type: ACTION_TYPES.SET_EDITED_AUTH_USER, payload: user });
       toast.success("User details updated successfully!");
     }
   } catch (error) {

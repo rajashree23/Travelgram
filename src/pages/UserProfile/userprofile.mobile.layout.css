@@ -110,3 +110,7 @@
 .icon{
   cursor: pointer;
 }
+.website{
+  color:var(--secondary-color);
+  text-decoration: none;
+}

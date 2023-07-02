@@ -55,7 +55,7 @@ export const EditUserProfile = ({ user, setShowEditProfile }) => {
               className="profile-pic-container edit"
               onClick={() => handleInput("profileAvatar", url)}
             >
-              <img src={url} alt={url[0]} />
+              <img src={url} alt={url[0]} loading="lazy"  />
             </div>
           ))}
         </div>
