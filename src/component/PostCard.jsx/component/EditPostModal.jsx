@@ -94,7 +94,7 @@ export const EditPostModal = ({ post }) => {
             <input
               type="file"
               id="editFileInput"
-              accept="image/*, video/mp4,video/x-m4v,video/*"
+              accept="image/*"
               onChange={(e) => setImage(e.target.files[0])}
             />
 

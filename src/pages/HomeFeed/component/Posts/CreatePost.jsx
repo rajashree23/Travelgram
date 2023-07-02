@@ -86,7 +86,7 @@ export const CreatePost = () => {
             <input
               type="file"
               id="fileInput"
-              accept="image/*, video/mp4,video/x-m4v,video/*"
+              accept="image/*"
               onChange={(e) => setImage(e.target.files[0])}
             />
           </div>
