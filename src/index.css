@@ -12,12 +12,16 @@
   --secondary-color: black;
   --menu-hover-color: #c8c9ca;
   --hover-color: #353637;
+  --menu-color: #c1c1c1;
+  --text-area-bg-color: #e7e7e7
 }
 [data-theme="dark"] {
   --primary-color: black;
   --secondary-color: #ffffff;
   --menu-hover-color: #3e3f40;
   --hover-color: #d1d5db;
+  --menu-color: #181818;
+  --text-area-bg-color: #141414
 }
 
 :root {
@@ -94,7 +98,7 @@ input[type="email"] {
   cursor: text;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1283px) {
   .primary-button,
   .secondary-button {
     font-size: var(--p-desktop);

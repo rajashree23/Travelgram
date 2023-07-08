@@ -45,6 +45,7 @@
 .form .tagline-container {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .tagline-container .image-container {
@@ -95,4 +96,10 @@
   color: var(--primary-color);
   text-decoration: none;
   background-color: transparent;
+}
+
+.input-fields{
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
 }

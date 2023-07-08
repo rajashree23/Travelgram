@@ -1,4 +1,7 @@
-@media (min-width: 768px) {
-
-    
+@media (min-width: 1283px) {
+  .input-fields {
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+  }
 }

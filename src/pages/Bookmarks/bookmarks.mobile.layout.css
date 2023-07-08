@@ -1,16 +1,21 @@
 .bookmarks-detail-container {
-    display: grid;
-    grid-template-columns: 100%;
-  }
-  
-  .bookmarks-detail-container .post-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 1rem;
-    color: var(--secondary-color);
-  }
-  
-  .bookmarks-detail-container .no-bookmark{
-    text-align: center;
-  }
+  display: grid;
+  grid-template-columns: 100%;
+}
+
+.bookmarks-detail-container .post-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem 0rem;
+  color: var(--secondary-color);
+}
+
+.bookmarks-detail-container .no-bookmark {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: var(--semi-bold);
+  align-items: center;
+  justify-content: center;
+  margin: 20rem 1rem 2rem;
+}

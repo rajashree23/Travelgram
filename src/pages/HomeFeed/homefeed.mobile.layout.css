@@ -34,7 +34,7 @@
 }
 .post-input {
   width: 100%;
-  background: var(--primary-color);
+  background: var(--text-area-bg-color);
   outline: none;
   border: none;
   color: var(--secondary-color);
@@ -125,20 +125,18 @@
 .filter-container .filter-menu li:hover {
   background-color: var(--menu-hover-color);
 }
-.post-container {
+.homefeed-container .post-container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-top: 1rem;
+  margin: -1rem 0rem;
   color: var(--secondary-color);
 }
 .post-input-container .new-post-container {
   overflow: hidden;
 }
-
 .new-post-container {
   display: flex;
-  position: relative;
 }
 
 .new-post-container img {

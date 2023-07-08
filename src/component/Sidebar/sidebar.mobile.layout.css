@@ -14,6 +14,7 @@
   border-top: 1px solid var(--border-color);
   z-index: 99;
   background-color: var(--primary-color);
+  align-items: center;
 }
 
 .mobile-sidebar-container .link {
@@ -29,8 +30,8 @@
   opacity: 50%;
 }
 .sidebar-profile-pic-container {
-  width: 35px;
-  height: 35px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: var(--secondary-color);
   align-self: flex-start;

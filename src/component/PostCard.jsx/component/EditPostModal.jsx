@@ -70,7 +70,7 @@ export const EditPostModal = ({ post }) => {
             />
 
             {(image || postData.mediaUrl) && (
-              <div className="new-post-container">
+              <div className="edit-post-container">
                 <LazyLoadImage
                   effect="blur"
                   src={image ? URL.createObjectURL(image) : postData.mediaUrl}

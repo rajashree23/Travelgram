@@ -1,3 +1,5 @@
+import { CgUnavailable } from "react-icons/cg";
+
 import { useDataContext } from "../../context/data/DataContext";
 import { LeftSidebar } from "../../component/Sidebar/LeftSidebar";
 import { PostCard } from "../../component/PostCard.jsx/PostCard";
@@ -22,25 +24,30 @@ export const Bookmarks = () => {
   return (
     <div className="bookmarks-detail-container">
       <LeftSidebar />
-      <div className="post-container">
-        {bookmarks.length === 0 && (
-          <p className="no-bookmark">No bookmarked posts!</p>
-        )}
-        {bookmarkPosts.map((post) => (
-          <PostCard
-            postDetails={{
-              post: post,
-              dispatch: dispatch,
-            }}
-            userDetails={{
-              users: users,
-              token: token,
-              authUser: authUser,
-              authDispatch: authDispatch,
-              bookmarks: bookmarks,
-            }}
-          />
-        ))}
+      <div>
+        <div className="post-container">
+          {bookmarks.length === 0 && (
+            <div className="no-bookmark">
+              <p>No bookmarked posts!</p>
+              <CgUnavailable />
+            </div>
+          )}
+          {bookmarkPosts.map((post) => (
+            <PostCard
+              postDetails={{
+                post: post,
+                dispatch: dispatch,
+              }}
+              userDetails={{
+                users: users,
+                token: token,
+                authUser: authUser,
+                authDispatch: authDispatch,
+                bookmarks: bookmarks,
+              }}
+            />
+          ))}
+        </div>
       </div>
       <Followbar />
     </div>

@@ -1,4 +1,4 @@
-@media (min-width: 1024px) {
+@media (min-width: 1283px) {
   .followbar-container {
     display: block;
     border-left: 1px solid var(--border-color);
@@ -43,7 +43,7 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    background: #131313;
+    background: var(--primary-color);
     z-index: 99;
     top: 4rem;
     gap: 1rem;
@@ -56,5 +56,8 @@
     gap: 1rem;
     text-decoration: none;
     color: var(--secondary-color);
+  }
+  .find-users-container .profile-pic-container{
+    width: 50px;
   }
 }

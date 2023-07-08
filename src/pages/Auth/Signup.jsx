@@ -76,32 +76,35 @@ export const Signup = ({ handleToggleLoginPage }) => {
           </div>
           <h1>Travelgram!</h1>
         </div>
-        <label htmlFor="first-name" className="label">
-          First name
-        </label>
-        <div className="input-container">
-          <input
-            type="text"
-            id="first-name"
-            required
-            placeholder="Enter first name"
-            value={signupForm.firstName}
-            onChange={(e) => setSignUpFormHandler("firstName", e)}
-          />
+        <div className="input-fields">
+          <label htmlFor="first-name" className="label">
+            First name
+          </label>
+          <div className="input-container">
+            <input
+              type="text"
+              id="first-name"
+              required
+              placeholder="Enter first name"
+              value={signupForm.firstName}
+              onChange={(e) => setSignUpFormHandler("firstName", e)}
+            />
+          </div>
+          <label htmlFor="last-name" className="label">
+            Last name
+          </label>
+          <div className="input-container">
+            <input
+              type="text"
+              id="last-name"
+              required
+              placeholder="Enter last name"
+              value={signupForm.lastName}
+              onChange={(e) => setSignUpFormHandler("lastName", e)}
+            />
+          </div>
         </div>
-        <label htmlFor="last-name" className="label">
-          Last name
-        </label>
-        <div className="input-container">
-          <input
-            type="text"
-            id="last-name"
-            required
-            placeholder="Enter last name"
-            value={signupForm.lastName}
-            onChange={(e) => setSignUpFormHandler("lastName", e)}
-          />
-        </div>
+
         <label htmlFor="email" className="label">
           Email
         </label>
