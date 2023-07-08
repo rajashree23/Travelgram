@@ -93,8 +93,8 @@
   font-size: 1.125rem;
 }
 .edit {
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   margin: auto;
   cursor: pointer;
 }
@@ -107,8 +107,8 @@
   color: var(--secondary-color);
   font-size: 2rem;
   position: absolute;
-  left: 16rem;
-  bottom: 40rem;
+  left: 15rem;
+  bottom: 33rem;
 }
 .icon{
   cursor: pointer;
