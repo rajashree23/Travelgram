@@ -21,7 +21,21 @@ npm start
 
 ### Features
   - Authentication using JWT along with form validation for Login and Signup Pages. All the below features are present after login.
- 
+  - Dark mode and Light theme modes are available.
+  - User can create, edit and delete the post.
+  - Image can be added to the Post.
+  - Users can like or unlike any post.
+  - Users can add or remove posts from bookmarks.
+  - Home Page where users can see their and friends' posts followed by him/her. Trending, Oldest, and Latest Features where users can sort the posts based on maximum likes and by date.
+  - Explore Page where all the posts will be visible.
+  - Bookmarks Page where all the posts bookmarked by the user will be visible.
+  - Users can follow or unfollow other users.
+  - Profile Page where user can edit their profile. It contains details like Following, Followers, Avatar, Bio and Portfolio URLs. Users can edit their profiles and choose photos from default avatars.
+  - Users can view the profile of other users as well.
+  - Search Functionality with search suggestions.
+  - Suggestions with Follow Button on all pages.
+  - Alerts in the app to notify the users about success/failure operations.
+  - All the screens are Responsive. 
     
 ### Tech Stack and Tools
 - React(useContext and useReducer)
@@ -30,3 +44,8 @@ npm start
 - Git For Version Control
 - Netlify for Deployment
 - Cloudinary for Image Storage
+
+### Logo
+Created by me on Canva
+
+### Demo Video
