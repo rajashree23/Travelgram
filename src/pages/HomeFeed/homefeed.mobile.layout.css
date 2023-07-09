@@ -134,6 +134,7 @@
 }
 .post-input-container .new-post-container {
   overflow: hidden;
+  position: relative;
 }
 .new-post-container {
   display: flex;
@@ -149,4 +150,5 @@
   right: 0.5rem;
   top: 0.5rem;
   cursor: pointer;
+  color:black
 }
