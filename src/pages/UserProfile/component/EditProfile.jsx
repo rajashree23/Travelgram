@@ -56,7 +56,7 @@ export const EditUserProfile = ({ user, setShowEditProfile }) => {
             <div
               key={index}
               className="profile-pic-container edit"
-              onClick={() => handleInput("profileAvatar", url)}
+              onClick={() => {setImage(null);handleInput("profileAvatar", url)}}
             >
               <LazyLoadImage src={url} alt={url[0]} effect="blur" />
             </div>
